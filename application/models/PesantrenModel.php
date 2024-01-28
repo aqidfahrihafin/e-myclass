@@ -14,7 +14,7 @@ class PesantrenModel extends CI_Model {
 
     // Mengupdate data pesantren
     public function update_pesantren($data, $id) {
-        $this->db->where('id', $id);
+        $this->db->where('pesantren_id', $id);
         return $this->db->update('pesantren', $data);
     }
 
