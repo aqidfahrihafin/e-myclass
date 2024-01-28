@@ -45,8 +45,6 @@
 <script src="<?php echo base_url('public/assets/');?>libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 <script src="<?php echo base_url('public/assets/');?>js/pages/datatables.init.js"></script>
 
-<script src="<?php echo base_url('public/assets/');?>js/pages/form-validation.init.js"></script>
-<script src="{{ asset('assets\libs\parsleyjs\parsley.min.js"></script>
 <script src="<?php echo base_url('public/assets/');?>js/app.js"></script>
 </body>
 
