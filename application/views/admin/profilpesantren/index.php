@@ -1,4 +1,5 @@
-            <div class="row">
+    <?php foreach ($pesantren as $result): ?>
+           <div class="row">
                 <div class="col-xl-4">
                     <div class="card overflow-hidden">
                         <div class="bg-soft-primary">
@@ -17,7 +18,7 @@
                                         <img src="<?php echo base_url('public/assets/');?>images/logo1.png" alt=""
                                             class="img-thumbnail rounded-circle">
                                     </div>
-                                    <h5 class="font-size-15 text-truncate">PP. APINS DIGITAL</h5>
+                                    <h5 class="font-size-15 text-truncate"><?php echo $result['nama_lembaga']; ?></h5>
                                     <p class="text-muted mb-0 text-truncate">admin</p>
                                     <div class="mt-2">
                                         <a href="" class="btn btn-primary waves-effect waves-light btn-sm">Edit
@@ -66,31 +67,31 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">Nama </th>
-                                            <td>PONDOK PESANTREN APINS DIGITAL</td>
+                                            <td><?php echo $result['nama_lembaga']; ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">NSM </th>
-                                            <td>123456</td>
+                                            <td><?php echo $result['nsm']; ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">NPSM </th>
-                                            <td>321321</td>
+                                            <td><?php echo $result['npsm']; ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Alamat </th>
-                                            <td>Jl. K.H. Aqid Fahri Hafin sumenep</td>
+                                            <td><?php echo $result['alamat']; ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Kecamatan </th>
-                                            <td>Ganding</td>
+                                            <td><?php echo $result['kecamatan']; ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Kabupaten/Kota </th>
-                                            <td>Sumenep</td>
+                                            <td><?php echo $result['kabupaten']; ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Provinsi </th>
-                                            <td>Jawa Timur</td>
+                                            <td><?php echo $result['provinsi']; ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -106,11 +107,11 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">Nama Pimpinan </th>
-                                            <td>Aqid Fahri Hafin, S.Kom</td>
+                                            <td><?php echo $result['pimpinan']; ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">NIP </th>
-                                            <td>123456</td>
+                                            <td><?php echo $result['nip']; ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -120,3 +121,4 @@
                 </div>
             </div>
             <!-- end row -->
+ <?php endforeach; ?>
