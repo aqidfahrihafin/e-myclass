@@ -12,7 +12,7 @@ $route['register'] = 'home/register';
 //route dashboard admin
 $route['dashboard'] = 'admin/dashboard/index';
 $route['pesantren'] = 'admin/pesantren/index';
-$route['setting'] = 'admin/setting/index';
+$route['tahunajaran'] = 'admin/tahunajaran/index';
 $route['mapel'] = 'admin/mapel/index';
 $route['kelas'] = 'admin/kelas/index';
 

@@ -22,7 +22,7 @@
                           </a>
                           <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
-                              <a href="<?php echo base_url('/setting');?>" class="dropdown-item">Pengaturan</a>
+                              <a href="<?php echo base_url('/tahunajaran');?>" class="dropdown-item">Sanah Dirasah</a>
                               <a href="<?php echo base_url('/mapel');?>" class="dropdown-item">Mata Pelajaran</a>
                               <a href="<?php echo base_url('/kelas');?>" class="dropdown-item">Data Kelas</a>
                           </div>

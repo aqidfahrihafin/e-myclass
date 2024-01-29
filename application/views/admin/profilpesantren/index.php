@@ -15,42 +15,18 @@
                             <div class="row" align="center">
                                 <div class="col-sm-12">
                                     <div class="avatar-md profile-user-wid mb-4">
-                                        <img src="<?php echo base_url('public/assets/');?>images/logo1.png" alt=""
+                                        <img src="<?php echo base_url('upload/logo/'.$result['logo']); ?>" alt=""
                                             class="img-thumbnail rounded-circle">
                                     </div>
                                     <h5 class="font-size-15 text-truncate"><?php echo $result['nama_lembaga']; ?></h5>
                                     <p class="text-muted mb-0 text-truncate">admin</p>
                                     <div class="mt-2">
-                                        <a href="" class="btn btn-primary waves-effect waves-light btn-sm">Edit
+                                        <a href="" class="btn btn-primary waves-effect waves-light btn-sm" data-toggle="modal" data-target=".pesantren<?php echo $result['pesantren_id']; ?>">Edit
                                             Profile <i class="mdi mdi-arrow-right ml-1"></i></a>
                                     </div>
                                 </div>
 
                             </div>
-                        </div>
-                    </div>
-                    <!-- end card -->
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Ubah Password</h4>
-                            <form>
-                                <div class="form-group">
-                                    <label for="formrow-password-input">Password Lama</label>
-                                    <input type="password" class="form-control" id="formrow-password-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="formrow-passwordbaru-input">Password Baru</label>
-                                    <input type="password" class="form-control" id="formrow-passwordbaru-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="formrow-passwordconfirmasi-input">Konfirmasi Password</label>
-                                    <input type="password" class="form-control" id="formrow-passwordconfirmasi-input">
-                                </div>
-                                <div align="right">
-                                    <button type="submit" class="btn btn-primary  w-md">Submit</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                     <!-- end card -->
@@ -66,7 +42,7 @@
                                 <table class="table table-nowrap mb-0">
                                     <tbody>
                                         <tr>
-                                            <th scope="row">Nama </th>
+                                            <th scope="row">Nama Pesantren</th>
                                             <td><?php echo $result['nama_lembaga']; ?></td>
                                         </tr>
                                         <tr>
@@ -121,4 +97,7 @@
                 </div>
             </div>
             <!-- end row -->
- <?php endforeach; ?>
+<?php endforeach; ?>
+			
+<?php $this->load->view('admin/profilpesantren/edit');?>
+

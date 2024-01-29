@@ -41,3 +41,13 @@ CREATE TABLE santri (
   photo VARCHAR(255),
   status ENUM('aktif', 'keluar', 'lulus', 'tidak_lulus'),
 );
+
+-- tahun ajaran 
+CREATE TABLE tahun_ajaran (
+    tahun_ajaran_id VARCHAR(50) NOT NULL,
+    kode_tahun VARCHAR(20) NOT NULL,
+    nama_tahun VARCHAR(100) NOT NULL,
+    status_aktif ENUM('aktif', 'non-aktif') DEFAULT 'non-aktif',
+    PRIMARY KEY (tahun_ajaran_id),
+    UNIQUE INDEX idx_tahun_ajaran_kode_tahun (kode_tahun)
+);

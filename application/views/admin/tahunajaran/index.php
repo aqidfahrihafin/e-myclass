@@ -1,4 +1,14 @@
 
+				<?php if ($this->session->flashdata('alert')): ?>
+					<div id="alert">
+						<?php echo $this->session->flashdata('alert'); ?>
+					</div>
+					<script>
+						setTimeout(function() {
+							document.getElementById("alert").remove();
+						}, <?php echo $this->session->flashdata('alert_timeout'); ?>);
+					</script>
+				<?php endif; ?>
     <div class="row">
         <div class="col-xl-4">
             <div class="card">
@@ -28,7 +38,10 @@
                             <div class="form-group">
                                 <label class="control-label">Sanah Dirasah</label>
                                 <select class="form-control">
-                                    <option value="">2023/2024</option>
+									<?php usort($tahun_ajaran, function($a, $b) { return strcmp($b->tahun_ajaran_id, $a->tahun_ajaran_id);});
+									 foreach ($tahun_ajaran as $tahun) {?>
+										<option value="<?php echo $tahun->kode_tahun; ?>"><?php echo $tahun->nama_tahun; ?></option>
+									<?php }?>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -55,7 +68,7 @@
                         <div class="float-right">
                             <div class="input-group input-group-sm">
                                 <button type="button" class="btn btn-primary btn-sm waves-effect btn-label waves-light"
-                                    data-toggle="modal" data-target=".bs-example-modal-center"><i
+                                    data-toggle="modal" data-target=".tahunajaran"><i
                                         class="bx bx-plus label-icon"></i> Add
                                 </button>
                             </div>
@@ -65,7 +78,6 @@
                     </div>
 
                     <div class="table-responsive">
-
                         <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
@@ -78,26 +90,39 @@
                                 </tr>
                             </thead>
 
-
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>TP2324</td>
-                                    <td>2023/2024</td>
-                                    <td align="center">
-                                        <span class="badge badge-pill badge-success font-size-8">Aktif</span>
-                                    </td>
-                                    <td align="center">
-                                        <button type="button" class="btn btn-warning waves-effect waves-light btn-sm">
-                                            <i class="mdi mdi-pencil"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger waves-effect waves-light btn-sm">
-                                            <i class="mdi mdi-trash-can"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
+							<tbody>
+								<?php if ($tahun_ajaran) { $no = 1;
+									foreach ($tahun_ajaran as $tahun) {?>
+										<tr>
+											<td><?php echo $no++; ?></td>
+											<td><?php echo $tahun->kode_tahun; ?></td>
+											<td><?php echo $tahun->nama_tahun; ?></td>
+											<td align="center">
+												<span class="badge badge-pill badge-<?php echo ($tahun->status == 'aktif') ? 'success' : 'danger'; ?> font-size-8"><?php echo $tahun->status; ?></span>
+											</td>
+											<td align="center">
+												<button type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="modal" data-target=".tahunajaran<?php echo $tahun->tahun_ajaran_id; ?>">
+													<i class="mdi mdi-pencil"></i>
+												</button>
+												<button type="button" class="btn btn-danger waves-effect waves-light btn-sm" onclick="hapusTahunAjaran('<?php echo $tahun->tahun_ajaran_id; ?>')">
+													<i class="mdi mdi-trash-can"></i>
+												</button>
+											</td>
+										</tr>
+									<?php	} } else {?>
+									<tr>
+										<td colspan="5" align="center">Tidak ada data tahun ajaran.</td>
+									</tr>
+								<?php }?>
+							</tbody>
                         </table>
+						<script>
+							function hapusTahunAjaran(tahunAjaranId) {
+								if (confirm('Anda yakin ingin menghapus tahun ajaran ini?')) {
+									window.location.href = '<?= site_url('admin/tahunajaran/delete/'); ?>' + tahunAjaranId;
+								}
+							}
+						</script>
                     </div>
                 </div>
             </div>
@@ -105,41 +130,5 @@
     </div>
     <!-- end row -->
 
-	<!-- add modal -->
-    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered  modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title mt-0">Add Sanah Dirasah</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="kode">Kode Tahun</label>
-                            <input type="text" class="form-control" id="kode">
-                        </div>
-                        <div class="form-group">
-                            <label for="tahun">Sanah Dirasah</label>
-                            <input type="text" class="form-control" id="tahun">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Status</label>
-                            <select class="form-control">
-                                <option value="">Aktif</option>
-                                <option value="">Non Aktif</option>
-                            </select>
-                        </div>
-                        <hr>
-                        <div align="right">
-                            <button type="submit" class="btn btn-primary  w-md">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
+<?php $this->load->view('admin/tahunajaran/edit');?>
+<?php $this->load->view('admin/tahunajaran/add');?>

@@ -6,16 +6,14 @@ class PesantrenModel extends CI_Model {
         $this->load->database();
     }
 
-    // Mengambil semua data pesantren
     public function get_pesantren() {
         $query = $this->db->get('pesantren');
         return $query->result_array();
     }
 
-    // Mengupdate data pesantren
-    public function update_pesantren($data, $id) {
-        $this->db->where('pesantren_id', $id);
-        return $this->db->update('pesantren', $data);
+    public function update_pesantren($pesantren_id, $data) {
+        $this->db->where('pesantren_id', $pesantren_id);
+        $this->db->update('pesantren', $data);
     }
 
 }?>
