@@ -42,12 +42,47 @@ CREATE TABLE santri (
   status ENUM('aktif', 'keluar', 'lulus', 'tidak_lulus'),
 );
 
--- tahun ajaran 
-CREATE TABLE tahun_ajaran (
-    tahun_ajaran_id VARCHAR(50) NOT NULL,
-    kode_tahun VARCHAR(20) NOT NULL,
-    nama_tahun VARCHAR(100) NOT NULL,
-    status_aktif ENUM('aktif', 'non-aktif') DEFAULT 'non-aktif',
-    PRIMARY KEY (tahun_ajaran_id),
-    UNIQUE INDEX idx_tahun_ajaran_kode_tahun (kode_tahun)
+-- kelas
+CREATE TABLE `kelas` (
+  `kelas_id` varchar(36) NOT NULL,
+  `kode_kelas` varchar(36) NOT NULL,
+  `kelas` varchar(20) NOT NULL,
+  PRIMARY KEY (`kelas_id`)
 );
+
+-- tahun ajaran 
+CREATE TABLE `tahun_ajaran` (
+    `tahun_ajaran_id` VARCHAR(36) NOT NULL,
+    `kode_tahun` VARCHAR(20) NOT NULL,
+    `nama_tahun` VARCHAR(100) NOT NULL,
+    `status` ENUM('aktif', 'non-aktif') DEFAULT 'non-aktif',
+    PRIMARY KEY (`tahun_ajaran_id`),
+    UNIQUE INDEX `idx_tahun_ajaran_kode_tahun` (`kode_tahun`)
+);
+
+-- target atau kkm
+CREATE TABLE `kkm` (
+  `kkm_id` varchar(36) NOT NULL,
+  `kkm` int(3) NOT NULL,
+  `predikat_d` varchar(6) NOT NULL,
+  `predikat_c` varchar(6) NOT NULL,
+  `predikat_b` varchar(6) NOT NULL,
+  `predikat_a` varchar(6) NOT NULL,
+  PRIMARY KEY (`kkm_id`)
+);
+
+-- mata pelajaran
+CREATE TABLE `mapel` (
+  `mapel_id` varchar(36) NOT NULL,
+  `kelas_id` varchar(36) NOT NULL,
+  `kkm_id` varchar(36) NOT NULL,
+  `tahun_ajaran_id` varchar(36) NOT NULL,
+  `kode_mapel` varchar(50) NOT NULL,
+  `nama_mapel` varchar(50) NOT NULL,
+  PRIMARY KEY (`mapel_id`),
+  FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`kelas_id`),
+  FOREIGN KEY (`kkm_id`) REFERENCES `kkm` (`kkm_id`),
+  FOREIGN KEY (`tahun_ajaran_id`) REFERENCES `tahun_ajaran` (`tahun_ajaran_id`)
+);
+
+

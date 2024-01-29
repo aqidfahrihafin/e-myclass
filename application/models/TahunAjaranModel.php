@@ -15,10 +15,6 @@ class TahunAjaranModel extends CI_Model {
         return $this->db->get('tahun_ajaran')->result();
     }
 
-    public function get_tahun_ajaran_by_id($tahun_ajaran_id) {
-        return $this->db->get_where('tahun_ajaran', array('tahun_ajaran_id' => $tahun_ajaran_id))->row();
-    }
-
     public function update_tahun_ajaran($tahun_ajaran_id, $data) {
         $this->db->where('tahun_ajaran_id', $tahun_ajaran_id);
         $this->db->update('tahun_ajaran', $data);

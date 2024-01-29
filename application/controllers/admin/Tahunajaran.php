@@ -19,7 +19,7 @@ class Tahunajaran extends CI_Controller {
     public function simpan() {
         $data = array(
             'tahun_ajaran_id' => md5(date('YmdHis') . rand(1000, 9999)),
-            'kode_tahun' => $this->input->post('kode_tahun'),
+            'kode_tahun' => 'SN-0'.(date('y') . rand(1000, 99)),
             'nama_tahun' => $this->input->post('nama_tahun'),
             'status' => $this->input->post('status'),
         );
@@ -49,4 +49,5 @@ class Tahunajaran extends CI_Controller {
         $this->session->set_flashdata('alert_timeout', 4000);
         redirect('tahunajaran');
     }
+	
 }

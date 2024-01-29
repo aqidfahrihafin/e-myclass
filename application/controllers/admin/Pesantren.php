@@ -47,7 +47,7 @@ class Pesantren extends CI_Controller {
         );
 
         // Panggil model untuk melakukan update
-        $this->Pesantren_model->update_pesantren($pesantren_id, $data);
+        $this->PesantrenModel->update_pesantren($pesantren_id, $data);
 
         // Redirect atau tampilkan pesan sukses
         redirect('pesantren');
@@ -64,7 +64,7 @@ class Pesantren extends CI_Controller {
 
         if ($this->upload->do_upload('logo')) {
             // Jika upload berhasil, return path logo yang diupload
-            return 'upload/logo/' . $this->upload->data('file_name');
+            return $this->upload->data('file_name');
         } else {
             // Jika upload gagal, tampilkan pesan error
             return $this->upload->display_errors();

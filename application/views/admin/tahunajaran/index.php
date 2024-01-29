@@ -1,14 +1,13 @@
-
-				<?php if ($this->session->flashdata('alert')): ?>
-					<div id="alert">
-						<?php echo $this->session->flashdata('alert'); ?>
-					</div>
-					<script>
-						setTimeout(function() {
-							document.getElementById("alert").remove();
-						}, <?php echo $this->session->flashdata('alert_timeout'); ?>);
-					</script>
-				<?php endif; ?>
+	<?php if ($this->session->flashdata('alert')): ?>
+		<div id="alert">
+			<?php echo $this->session->flashdata('alert'); ?>
+		</div>
+		<script>
+			setTimeout(function() {
+				document.getElementById("alert").remove();
+			}, <?php echo $this->session->flashdata('alert_timeout'); ?>);
+		</script>
+	<?php endif; ?>
     <div class="row">
         <div class="col-xl-4">
             <div class="card">
@@ -91,7 +90,7 @@
                             </thead>
 
 							<tbody>
-								<?php if ($tahun_ajaran) { $no = 1;
+								<?php if ($tahun_ajaran) { $no = 1; usort($tahun_ajaran, function($a, $b) { return strcmp($b->tahun_ajaran_id, $a->tahun_ajaran_id);});
 									foreach ($tahun_ajaran as $tahun) {?>
 										<tr>
 											<td><?php echo $no++; ?></td>
