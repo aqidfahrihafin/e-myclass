@@ -48,20 +48,32 @@ CREATE TABLE guru (
   guru_id VARCHAR(36) PRIMARY KEY,
   niy VARCHAR(20),
   nik VARCHAR(20),
-  no_induk VARCHAR(10),
   nama_guru VARCHAR(30),
   tempat_lahir VARCHAR(30),
   tanggal_lahir DATE,
   jenis_kelamin VARCHAR(10),
   alamat_guru TEXT,
   telp_guru VARCHAR(20),
+  pendidikan VARCHAR(20),
   photo VARCHAR(255),
   status ENUM('aktif', 'non-aktif'),
 	create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- kelas
-S
+CREATE TABLE kelas (
+    kelas_id VARCHAR(36) NOT NULL,
+    guru_id VARCHAR(50),
+    tahun_ajaran_id VARCHAR(50) NOT NULL,
+    kode_kelas VARCHAR(255),
+    kelas VARCHAR(255),
+    PRIMARY KEY (kelas_id),
+    FOREIGN KEY (guru_id) REFERENCES guru(guru_id) ON DELETE SET NULL,
+    FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id),
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 
 -- tahun ajaran 
 CREATE TABLE tahun_ajaran (
