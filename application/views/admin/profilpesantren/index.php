@@ -1,4 +1,15 @@
-    <?php foreach ($pesantren as $result): ?>
+<?php if ($this->session->flashdata('alert')): ?>
+	<div id="alert">
+		<?php echo $this->session->flashdata('alert'); ?>
+	</div>
+	<script>
+		setTimeout(function() {
+			document.getElementById("alert").remove();
+		}, <?php echo $this->session->flashdata('alert_timeout'); ?>);
+	</script>
+<?php endif; ?>
+
+<?php foreach ($pesantren as $result): ?>
            <div class="row">
                 <div class="col-xl-4">
                     <div class="card overflow-hidden">

@@ -16,58 +16,53 @@ class Pesantren extends CI_Controller {
         $this->load->view('templates/content', $data);
 	}
 
-	public function update_pesantren() {
-        // Ambil data dari form
-        $pesantren_id = $this->input->post('pesantren_id');
-        $nama_lembaga = $this->input->post('nama_lembaga');
-        $nsm = $this->input->post('nsm');
-        $npsm = $this->input->post('npsm');
-        $alamat = $this->input->post('alamat');
-        $kecamatan = $this->input->post('kecamatan');
-        $kabupaten = $this->input->post('kabupaten');
-        $provinsi = $this->input->post('provinsi');
-        $pimpinan = $this->input->post('pimpinan');
-        $nip = $this->input->post('nip');
+    public function update_pesantren() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $pesantren_id = $this->input->post('pesantren_id');
+            $data = array(
+                'nama_lembaga' => $this->input->post('nama_lembaga'),
+                'nsm' => $this->input->post('nsm'),
+                'npsm' => $this->input->post('npsm'),
+                'alamat' => $this->input->post('alamat'),
+                'kecamatan' => $this->input->post('kecamatan'),
+                'kabupaten' => $this->input->post('kabupaten'),
+                'provinsi' => $this->input->post('provinsi'),
+                'pimpinan' => $this->input->post('pimpinan'),
+                'nip' => $this->input->post('nip')
+            );
 
-        // Proses upload logo baru
-        $logo_path = $this->upload_logo();
+            if (!empty($_FILES['logo']['name'])) {
+                $this->load->library('upload');
 
-        // Simpan data ke dalam array
-        $data = array(
-            'nama_lembaga' => $nama_lembaga,
-            'nsm' => $nsm,
-            'npsm' => $npsm,
-            'alamat' => $alamat,
-            'kecamatan' => $kecamatan,
-            'kabupaten' => $kabupaten,
-            'provinsi' => $provinsi,
-            'logo' => $logo_path,
-            'pimpinan' => $pimpinan,
-            'nip' => $nip
-        );
+                $config['upload_path']   = './upload/logo/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['max_size']      = 2048; // 2 MB
+                $config['encrypt_name']  = TRUE;
 
-        // Panggil model untuk melakukan update
-        $this->PesantrenModel->update_pesantren($pesantren_id, $data);
+                $this->upload->initialize($config);
 
-        // Redirect atau tampilkan pesan sukses
-        redirect('pesantren');
-    }
+                if ($this->upload->do_upload('logo')) {
+                    $data['logo'] = $this->upload->data('file_name');
+                    $old_logo_filename = $this->PesantrenModel->get_logo_filename($pesantren_id);
+                    $old_logo_path = './upload/logo/' . $old_logo_filename;
 
-    private function upload_logo() {
-        // Konfigurasi upload
-        $config['upload_path']   = './upload/logo/';
-        $config['allowed_types'] = 'gif|jpg|jpeg|png';
-        $config['max_size']      = 2048; // 2 MB
-        $config['encrypt_name']  = TRUE;
+                    if (file_exists($old_logo_path)) {
+                        unlink($old_logo_path);
+                    }
+                } else {
+                    $this->session->set_flashdata('alert', '<div class="alert alert-danger">Data gagal update!</div>');
+                    $this->session->set_flashdata('alert_timeout', 4000);
+                    redirect('pesantren');
+                }
+            } else {
+                $data['logo'] = $this->PesantrenModel->get_logo_filename($pesantren_id);
+            }
 
-        $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload('logo')) {
-            // Jika upload berhasil, return path logo yang diupload
-            return $this->upload->data('file_name');
-        } else {
-            // Jika upload gagal, tampilkan pesan error
-            return $this->upload->display_errors();
+            $this->PesantrenModel->update_pesantren($pesantren_id, $data);
+            $this->session->set_flashdata('alert', '<div class="alert alert-info">Data berhasil update!</div>');
+            $this->session->set_flashdata('alert_timeout', 4000);
+            redirect('pesantren');
         }
     }
+
 }

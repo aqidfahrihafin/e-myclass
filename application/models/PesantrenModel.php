@@ -11,6 +11,18 @@ class PesantrenModel extends CI_Model {
         return $query->result_array();
     }
 
+	public function get_logo_filename($pesantren_id) {
+        $this->db->select('logo');
+        $this->db->where('pesantren_id', $pesantren_id);
+        $query = $this->db->get('pesantren');
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->logo;
+        }
+        return null;
+    }
+
     public function update_pesantren($pesantren_id, $data) {
         $this->db->where('pesantren_id', $pesantren_id);
         $this->db->update('pesantren', $data);
