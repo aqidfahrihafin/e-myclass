@@ -6,12 +6,16 @@ class Kelas extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('KelasModel');
+        $this->load->model('GuruModel');
+        $this->load->model('TahunAjaranModel');
     }
 
 	public function index() {
 		$data['title'] = 'Data Kelas';
 
 		$data['kelas'] = $this->KelasModel->get_all_kelas();
+		$data['guru'] = $this->GuruModel->get_all_guru();
+		$data['tahunajaran'] = $this->TahunAjaranModel->get_all_tahun_ajaran();
         $data['content_view'] = 'admin/kelas/index';
         $this->load->view('templates/content', $data);
 	}
@@ -21,6 +25,8 @@ class Kelas extends CI_Controller {
             'kelas_id' => md5(date('YmdHis') . rand(1000, 9999)),
             'kode_kelas' => 'KL-0'.(date('y') . rand(1000, 99)),
             'kelas' => $this->input->post('kelas'),
+            'guru_id' => $this->input->post('guru_id'),
+            'tahun_ajaran_id' => $this->input->post('tahun_ajaran_id'),
         );
 
         $this->KelasModel->insert_kelas($data);
@@ -33,6 +39,8 @@ class Kelas extends CI_Controller {
         $kelas_id = $this->input->post('kelas_id');
         $data = array(
             'kelas' => $this->input->post('kelas'),
+			'guru_id' => $this->input->post('guru_id'),
+            'tahun_ajaran_id' => $this->input->post('tahun_ajaran_id'),
         );
 
         $this->KelasModel->update_kelas($kelas_id, $data);

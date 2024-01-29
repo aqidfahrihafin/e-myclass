@@ -10,11 +10,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo site_url('admin/kelas/simpan'); ?>" method="post">
+                    <form action="<?php echo site_url('admin/kelas/simpan'); ?>" method="post">				
                         <div class="form-group">
                             <label for="tahun">Nama Kelas</label>
                             <input type="text" class="form-control" name="kelas" id="tahun">
                         </div>
+						<div class="form-group">
+							<label class="control-label">Sanah Dirasah</label>
+							<select class="form-control" name="tahun_ajaran_id">
+								<?php usort($tahunajaran, function($a, $b) { return strcmp($b->tahun_ajaran_id, $a->tahun_ajaran_id);});
+									foreach ($tahunajaran as $tahun) {?>
+									<option value="<?php echo $tahun->tahun_ajaran_id; ?>"><?php echo $tahun->nama_tahun; ?></option>
+								<?php }?>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Guru Pembimbing</label>
+							<select class="form-control" name="guru_id">
+								<?php foreach ($guru as $result) {?>
+									<option value="<?php echo $result['guru_id']; ?>"><?php echo $result['nama_guru']; ?></option>
+								<?php }?>
+							</select>
+						</div>
                         <hr>
                         <div align="right">
                             <button type="submit" class="btn btn-primary  w-md">Submit</button>

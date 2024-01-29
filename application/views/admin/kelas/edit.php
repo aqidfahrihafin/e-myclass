@@ -18,8 +18,25 @@
 							<input type="text" class="form-control" value="<?php echo $result->kode_kelas; ?>" id="kode" readonly>
 						</div>
 						<div class="form-group">
-							<label for="kelas">Sanah Dirasah</label>
+							<label for="kelas">Nama Kelas</label>
 							<input type="text" class="form-control" id="kelas" value="<?php echo $result->kelas; ?>" name="kelas">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Sanah Dirasah</label>
+							<select class="form-control" name="tahun_ajaran_id">
+								<?php usort($tahunajaran, function($a, $b) { return strcmp($b->tahun_ajaran_id, $a->tahun_ajaran_id);});
+									foreach ($tahunajaran as $tahun) {?>
+									<option value="<?php echo $tahun->tahun_ajaran_id; ?>"><?php echo $tahun->nama_tahun; ?></option>
+								<?php }?>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Guru Pembimbing</label>
+							<select class="form-control" name="guru_id">
+								<?php foreach ($guru as $result) {?>
+									<option value="<?php echo $result['guru_id']; ?>"><?php echo $result['nama_guru']; ?></option>
+								<?php }?>
+							</select>
 						</div>
 						<hr>
 						<div align="right">

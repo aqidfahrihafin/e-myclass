@@ -35,7 +35,8 @@
                                     <th width="10px">No</th>
                                     <th>Kode Kelas</th>
                                     <th>Nama Kelas</th>
-                                    <th>Status</th>
+                                    <th>Guru Pembimbing</th>
+                                    <th>Sanah Dirasah</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
@@ -47,8 +48,9 @@
 											<td><?php echo $no++; ?></td>
 											<td><?php echo $result->kode_kelas; ?></td>
 											<td><?php echo $result->kelas; ?></td>
+											<td><?php echo $result->nama_guru; ?></td>
 											<td align="center">
-												<span class="badge badge-pill badge-success font-size-8">Aktif</span>
+												<span class="badge badge-pill badge-info font-size-8"><?php echo $result->nama_tahun; ?></span>
 											</td>
 											<td align="center">
 											<button type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="modal" data-target=".kelas<?php echo $result->kelas_id ?>">
@@ -61,7 +63,7 @@
 										</tr>
 									<?php	} } else {?>
 									<tr>
-										<td colspan="5" align="center">Tidak ada data kelas.</td>
+										<td colspan="6" align="center">Tidak ada data kelas.</td>
 									</tr>
 							<?php }?>
                           </tbody>

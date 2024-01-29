@@ -1,7 +1,7 @@
 <?php foreach ($pesantren as $result): ?>
     <div class="modal fade pesantren<?php echo $result['pesantren_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
             aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered  modal-lg">
+        <div class="modal-dialog  modal-lg modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title mt-0">Edit <?php echo $title ?></h5>
