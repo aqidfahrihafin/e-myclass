@@ -22,18 +22,19 @@ CREATE TABLE santri (
   no_induk VARCHAR(10),
   nik VARCHAR(20),
   no_kk VARCHAR(20),
-  nama_santri VARCHAR(30),
+  nama_santri VARCHAR(100),
   tempat_lahir VARCHAR(30),
   tanggal_lahir DATE,
   jenis_kelamin VARCHAR(10),
   alamat_santri TEXT,
+  email VARCHAR(100),
   telp_santri VARCHAR(20),
-  nama_ayah VARCHAR(30),
+  nama_ayah VARCHAR(100),
   alamat_ayah TEXT,
   pendidikan_ayah VARCHAR(20),
   pekerjaan_ayah VARCHAR(20),
   telp_ayah VARCHAR(20),
-  nama_ibu VARCHAR(30),
+  nama_ibu VARCHAR(100),
   alamat_ibu TEXT,
   pendidikan_ibu VARCHAR(20),
   pekerjaan_ibu VARCHAR(20),
@@ -48,7 +49,7 @@ CREATE TABLE guru (
   guru_id VARCHAR(36) PRIMARY KEY,
   niy VARCHAR(20),
   nik VARCHAR(20),
-  nama_guru VARCHAR(30),
+  nama_guru VARCHAR(100),
   tempat_lahir VARCHAR(30),
   tanggal_lahir DATE,
   jenis_kelamin VARCHAR(10),
@@ -105,10 +106,8 @@ CREATE TABLE kkm (
 -- mata pelajaran
 CREATE TABLE mapel (
   mapel_id varchar(36) NOT NULL,
-  kelas_id varchar(36) NOT NULL,
   kode_mapel varchar(50) NOT NULL,
   nama_mapel varchar(50) NOT NULL,
 	create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (mapel_id),
-  FOREIGN KEY (kelas_id) REFERENCES kelas (kelas_id)
+  PRIMARY KEY (mapel_id)
 );

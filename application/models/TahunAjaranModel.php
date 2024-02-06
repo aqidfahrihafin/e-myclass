@@ -23,4 +23,12 @@ class TahunAjaranModel extends CI_Model {
     public function delete_tahun_ajaran($tahun_ajaran_id) {
         $this->db->delete('tahun_ajaran', array('tahun_ajaran_id' => $tahun_ajaran_id));
     }
+
+	public function get_tahun_ajaran_by_id($tahun_ajaran_id) {
+        $this->db->select('*');
+        $this->db->from('tahun_ajaran');
+        $this->db->where('tahun_ajaran_id', $tahun_ajaran_id);
+        $query = $this->db->get();
+        return $query->row();
+    }
 }

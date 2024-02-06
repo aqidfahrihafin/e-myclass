@@ -86,4 +86,11 @@ class Guru extends CI_Controller {
         $this->session->set_flashdata('alert_timeout', 4000);
         redirect('guru');
     }
+
+	public function cetak() {
+		$data['title'] = 'Cetak Data Guru';
+
+		$data['guru'] = $this->GuruModel->get_all_guru();
+		$this->load->view('admin/guru/cetak', $data);
+	}
 }

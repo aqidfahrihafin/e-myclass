@@ -6,7 +6,7 @@
                     <div class="clearfix">
                         <div class="float-right">
                             <div class="input-group input-group-sm">
-                                <button type="button" class="btn btn-primary btn-sm waves-effect btn-label waves-light"><i
+                                <button type="button" class="btn btn-primary btn-sm waves-effect btn-label waves-light"  data-toggle="modal" data-target=".addsantri"><i
                                         class="bx bx-plus label-icon"></i> Add
                                 </button>
                             </div>
@@ -56,3 +56,4 @@
         </div>
     </div>
     <!-- end row -->
+	<?php $this->load->view('admin/santri/add');?>

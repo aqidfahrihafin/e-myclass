@@ -1,3 +1,13 @@
+<?php if ($this->session->flashdata('alert')): ?>
+	<div id="alert">
+		<?php echo $this->session->flashdata('alert'); ?>
+	</div>
+	<script>
+		setTimeout(function() {
+			document.getElementById("alert").remove();
+		}, <?php echo $this->session->flashdata('alert_timeout'); ?>);
+	</script>
+<?php endif; ?>
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
@@ -5,11 +15,10 @@
 
                 <div class="clearfix">
                     <div class="float-right">
-                        <div class="input-group input-group-sm">
-                            <button type="button" class="btn btn-primary btn-sm waves-effect btn-label waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i
-                                    class="bx bx-plus label-icon"></i> Add
-                            </button>
-                        </div>
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<a  target="_blank" href="<?php echo site_url('admin/mapel/cetak'); ?>"class="btn btn-danger btn-sm"><i class="bx bx-printer label-icon"></i></a>
+							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-center"><i class="bx bx-plus"></i></button>
+						</div>
                     </div>
                     <h4 class="card-title mb-4"><?php echo $title ?></h4>
                     <hr>
@@ -24,72 +33,40 @@
                                 <th width="10px">No</th>
                                 <th>Kode Mapel</th>
                                 <th>Nama Mapel</th>
-                                <th>Status</th>
                                 <th width="100px">Action</th>
                             </tr>
                         </thead>
-
-
                         <tbody>
+						<?php $no = 1; foreach ($mapel as $result) {?>		
                             <tr>
-                                <td>1</td>
-                                <td>TI0198</td>
-                                <td>Web Programming</td>
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $result->kode_mapel; ?></td>
+                                <td><?php echo $result->nama_mapel; ?></td>
                                 <td align="center">
-                                    <span class="badge badge-pill badge-success font-size-8">Aktif</span>
-                                </td>
-                                <td align="center">
-                                    <button type="button" class="btn btn-warning waves-effect waves-light btn-sm">
-                                        <i class="mdi mdi-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger waves-effect waves-light btn-sm">
-                                        <i class="mdi mdi-trash-can"></i>
-                                    </button>
+									<button type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="modal" data-target=".mapel<?php echo $result->mapel_id ?>">
+										<i class="mdi mdi-pencil"></i>
+									</button>
+                                    <button type="button" class="btn btn-danger waves-effect waves-light btn-sm" onclick="hapusguru('<?php echo $result->mapel_id; ?>')">
+										<i class="mdi mdi-trash-can"></i>
+									</button>
                                 </td>
                             </tr>
+						<?php }?>
                         </tbody>
                     </table>
+					<script>
+						function hapusguru(guruId) {
+							if (confirm('Anda yakin ingin menghapus mapel ini?')) {
+								window.location.href = '<?php echo base_url('admin/mapel/delete/'); ?>' + guruId;
+							}
+						}
+					</script>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- end row -->
+<?php $this->load->view('admin/mapel/add');?>
+<?php $this->load->view('admin/mapel/edit');?>
 
-<!-- modal add -->
-<div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered  modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title mt-0">Add <?php echo $title ?></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="kode">Kode Mapel</label>
-                        <input type="text" class="form-control" id="kode">
-                    </div>
-                    <div class="form-group">
-                        <label for="tahun">Nama Mapel</label>
-                        <input type="text" class="form-control" id="tahun">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Status</label>
-                        <select class="form-control">
-                                <option value="">Aktif</option>
-                                <option value="">Non Aktif</option>
-                        </select>
-                    </div>
-                    <hr>
-                    <div align="right">
-                        <button type="submit" class="btn btn-primary  w-md">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->

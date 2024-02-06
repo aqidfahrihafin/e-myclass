@@ -13,18 +13,20 @@
             <div class="card">
                 <div class="card-body">
 
-                    <div class="clearfix">
-                        <div class="float-right">
-                            <div class="input-group input-group-sm">
-                                <button type="button" class="btn btn-danger btn-sm waves-effect btn-label waves-light"
-                                    data-toggle="modal" data-target=".addguru">
-									<i class="bx bx-printer label-icon"></i> Cetak 
-                                </button>
-                            </div>
-                        </div>
-                        <h4 class="card-title mb-4"><?php echo $title ?></h4>
-                        <hr>
-                    </div>
+				<div class="clearfix">
+					<div class="float-right">
+						<div class="input-group input-group-sm">
+						<?php $isCetakButtonDisplayed = false; 
+							foreach ($guru as $result) { if ($result->tahun_ajaran_id && !$isCetakButtonDisplayed) {	?>
+									<a class="btn btn-danger btn-sm waves-effect btn-label waves-light" target="_blank" href="<?php echo site_url('admin/pembimbing/cetak/' . $result->tahun_ajaran_id); ?>">
+										<i class="bx bx-printer label-icon"></i> Cetak
+									</a>
+							<?php 	$isCetakButtonDisplayed = true; }}?>
+						</div>
+					</div>
+					<h4 class="card-title mb-4"><?php echo $title ?></h4>
+					<hr>
+				</div>
 
 				<div>
 					<form id="tahunAjaranForm" action="<?php echo site_url('admin/pembimbing'); ?>" method="post">		
@@ -48,8 +50,6 @@
 						}
 					});
 				</script>
-
-
 				    <hr>
                     <div class="table-responsive">
 
@@ -70,9 +70,7 @@
 								<?php $no = 1; foreach ($guru as $result) {?>							
 									<tr>
 										<td><?php echo $no++; ?></td>
-										<td> 
-											<?php echo $result->kode_kelas; ?>
-										</td>
+										<td><?php echo $result->kode_kelas; ?></td>
 										<td><?php echo $result->kelas; ?>-<?php echo $result->jenis_kelas; ?></td>
 										<td align="center">
 											<span class="badge badge-pill badge-info font-size-8">
@@ -84,8 +82,7 @@
 												<?php echo $result->nama_tahun; ?>
 											</span>
 										</td>
-										<td><?php echo $result->nama_guru; ?></td>
-										
+										<td><?php echo $result->nama_guru; ?></td>										
 									</tr>
 								<?php }?>
                             </tbody>

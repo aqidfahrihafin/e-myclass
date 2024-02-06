@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nik">NIK</label>
-                            <input type="text" class="form-control" id="nik" name="nik" required="">
+                            <input type="number" class="form-control" id="nik" name="nik" required="">
                         </div>
                         <div class="form-group">
                             <label for="niy">NIY</label>

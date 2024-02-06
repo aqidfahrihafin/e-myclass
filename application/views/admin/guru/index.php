@@ -15,19 +15,16 @@
 
                     <div class="clearfix">
                         <div class="float-right">
-                            <div class="input-group input-group-sm">
-                                <button type="button" class="btn btn-primary btn-sm waves-effect btn-label waves-light"
-                                    data-toggle="modal" data-target=".addguru"><i
-                                        class="bx bx-plus label-icon"></i> Add
-                                </button>
-                            </div>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<a target="_blank" href="<?php echo site_url('admin/guru/cetak'); ?>"class="btn btn-danger btn-sm"><i class="bx bx-printer label-icon"></i></a>
+								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".addguru"><i class="bx bx-plus"></i></button>
+							</div>
                         </div>
                         <h4 class="card-title mb-4"><?php echo $title ?></h4>
                         <hr>
                     </div>
 
                     <div class="table-responsive">
-
                         <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
@@ -42,7 +39,6 @@
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
-
                             <tbody>
 								<?php $no = 1; foreach ($guru as $result) {?>							
 									<tr>

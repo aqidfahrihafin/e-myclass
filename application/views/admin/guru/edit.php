@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label for="nik">NIK</label>
                             <input type="hidden" class="form-control" id="guru_id" value="<?php echo $result['guru_id']; ?>" name="guru_id" required="">
-                            <input type="text" class="form-control" id="nik" value="<?php echo $result['nik']; ?>" name="nik" required="">
+                            <input type="number" class="form-control" id="nik" value="<?php echo $result['nik']; ?>" name="nik" required="">
                         </div>
                         <div class="form-group">
                             <label for="niy">NIY</label>
