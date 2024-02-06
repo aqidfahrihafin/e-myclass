@@ -12,9 +12,20 @@
                 <div class="modal-body">
                     <form action="<?php echo site_url('admin/kelas/simpan'); ?>" method="post">				
                         <div class="form-group">
-                            <label for="tahun">Nama Kelas</label>
+                            <label for="tahun">Tingkat Kelas</label>
                             <input type="text" class="form-control" name="kelas" id="tahun">
                         </div>
+						<div class="form-group">
+                            <label for="target">Target Kelas/Semester</label>
+                            <input type="text" class="form-control" name="target_kelas" id="target">
+                        </div>
+						<div class="form-group">
+							<label class="control-label">Nama Kelas</label>
+							<select class="form-control" name="jenis_kelas">
+								<option value="Putra">Putra</option>
+								<option value="Putri">Putri</option>
+							</select>
+						</div>
 						<div class="form-group">
 							<label class="control-label">Sanah Dirasah</label>
 							<select class="form-control" name="tahun_ajaran_id">

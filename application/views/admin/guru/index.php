@@ -38,7 +38,6 @@
                                     <th>L/P</th>
                                     <th>TTL</th>
                                     <th>Pendidikan</th>
-                                    <th>Pembimbing</th>
                                     <th>Status</th>
                                     <th width="100px">Action</th>
                                 </tr>
@@ -48,20 +47,19 @@
 								<?php $no = 1; foreach ($guru as $result) {?>							
 									<tr>
 										<td><?php echo $no++; ?></td>
-										<td><?php echo $result->nama_guru; ?></td>
-										<td><?php echo $result->niy; ?></td>
-										<td><?php echo $result->jenis_kelamin; ?></td>
-										<td><?php echo $result->tempat_lahir; ?>, <?php $tanggal_lahir = $result->tanggal_lahir; $tanggal_lahir_format = date('d-m-Y', strtotime($tanggal_lahir)); echo $tanggal_lahir_format;?></td>
-										<td><?php echo $result->pendidikan; ?></td>
-										<td><?php echo $result->kode_kelas; ?> - <?php echo $result->kelas; ?></td>
+										<td><?php echo $result['nama_guru']; ?></td>
+										<td><?php echo $result['niy']; ?></td>
+										<td><?php echo $result['jenis_kelamin']; ?></td>
+										<td><?php echo $result['tempat_lahir']; ?>, <?php $tanggal_lahir = $result['tanggal_lahir']; $tanggal_lahir_format = date('d-m-Y', strtotime($tanggal_lahir)); echo $tanggal_lahir_format;?></td>
+										<td><?php echo $result['pendidikan']; ?></td>
 										<td align="center">
-											<span class="badge badge-pill badge-<?php echo ($result->status == 'aktif') ? 'success' : 'danger'; ?> font-size-8"><?php echo $result->status; ?></span>
+											<span class="badge badge-pill badge-<?php echo ($result['status'] == 'aktif') ? 'success' : 'danger'; ?> font-size-8"><?php echo $result['status']; ?></span>
 										</td>
 										<td align="center">
-											<button type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="modal" data-target=".kelas<?php echo $result->guru_id ?>">
+											<button type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="modal" data-target=".kelas<?php echo $result['guru_id'] ?>">
 													<i class="mdi mdi-pencil"></i>
 												</button>
-												<button type="button" class="btn btn-danger waves-effect waves-light btn-sm" onclick="hapusguru('<?php echo $result->guru_id; ?>')">
+												<button type="button" class="btn btn-danger waves-effect waves-light btn-sm" onclick="hapusguru('<?php echo $result['guru_id']; ?>')">
 													<i class="mdi mdi-trash-can"></i>
 												</button>
 											</td>

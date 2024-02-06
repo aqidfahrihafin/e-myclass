@@ -11,7 +11,7 @@ class Guru extends CI_Controller {
 	public function index() {
 		$data['title'] = 'Data Guru';
 
-		$data['guru'] = $this->GuruModel->get_all_data_guru();
+		$data['guru'] = $this->GuruModel->get_all_guru();
         $data['content_view'] = 'admin/guru/index';
         $this->load->view('templates/content', $data);
 	}

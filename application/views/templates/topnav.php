@@ -36,6 +36,7 @@
                           <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
                               <a href="<?php echo base_url('/guru');?>" class="dropdown-item">Data Guru</a>
+                              <a href="<?php echo base_url('/pembimbing');?>" class="dropdown-item">Guru Pembimbing</a>
                               <a href="<?php echo base_url('/datamengajar');?>" class="dropdown-item">Mengajar</a>
                           </div>
                       </li>

@@ -12,14 +12,21 @@ class GuruModel extends CI_Model {
     }
 
 	// get dengan left joint
-	public function get_all_data_guru() {
-		$this->db->select('guru.*, kelas.kode_kelas, kelas.kelas');
+	public function get_all_data_guru($tahun_ajaran_id) {
+		$this->db->select('guru.*, kelas.*, tahun_ajaran.nama_tahun');
 		$this->db->from('guru');
-		$this->db->join('kelas', 'guru.guru_id = kelas.guru_id', 'left');
-		$query = $this->db->get();
+		$this->db->join('kelas', 'guru.guru_id = kelas.guru_id', 'inner');
+		$this->db->join('tahun_ajaran', 'kelas.tahun_ajaran_id = tahun_ajaran.tahun_ajaran_id', 'left');
+		
+		// Tambahkan kondisi WHERE untuk memfilter berdasarkan tahun ajaran
+		$this->db->where('kelas.tahun_ajaran_id', $tahun_ajaran_id);
 
+		$query = $this->db->get();
 		return $query->result();
 	}
+
+
+
 
 	public function insert_guru($data) {
         $this->db->insert('guru', $data);

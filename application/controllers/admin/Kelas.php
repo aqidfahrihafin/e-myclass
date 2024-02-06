@@ -25,6 +25,8 @@ class Kelas extends CI_Controller {
             'kelas_id' => md5(date('YmdHis') . rand(1000, 9999)),
             'kode_kelas' => 'KL-0'.(date('y') . rand(1000, 99)),
             'kelas' => $this->input->post('kelas'),
+            'jenis_kelas' => $this->input->post('jenis_kelas'),
+            'target_kelas' => $this->input->post('target_kelas'),
             'guru_id' => $this->input->post('guru_id'),
             'tahun_ajaran_id' => $this->input->post('tahun_ajaran_id'),
         );
@@ -39,6 +41,8 @@ class Kelas extends CI_Controller {
         $kelas_id = $this->input->post('kelas_id');
         $data = array(
             'kelas' => $this->input->post('kelas'),
+            'jenis_kelas' => $this->input->post('jenis_kelas'),
+            'target_kelas' => $this->input->post('target_kelas'),
 			'guru_id' => $this->input->post('guru_id'),
             'tahun_ajaran_id' => $this->input->post('tahun_ajaran_id'),
         );

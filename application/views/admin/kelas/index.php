@@ -35,6 +35,7 @@
                                     <th width="10px">No</th>
                                     <th>Kode Kelas</th>
                                     <th>Nama Kelas</th>
+                                    <th>Target Kelas</th>
                                     <th>Guru Pembimbing</th>
                                     <th>Sanah Dirasah</th>
                                     <th width="100px">Action</th>
@@ -47,7 +48,8 @@
 										<tr>
 											<td><?php echo $no++; ?></td>
 											<td><?php echo $result->kode_kelas; ?></td>
-											<td><?php echo $result->kelas; ?></td>
+											<td><?php echo $result->kelas; ?>-<?php echo $result->jenis_kelas; ?></td>
+											<td><?php echo $result->target_kelas; ?></td>
 											<td><?php echo $result->nama_guru; ?></td>
 											<td align="center">
 												<span class="badge badge-pill badge-info font-size-8"><?php echo $result->nama_tahun; ?></span>

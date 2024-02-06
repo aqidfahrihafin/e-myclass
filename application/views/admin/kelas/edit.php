@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-dialog-centered  modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0">Add Sanah Dirasah</h5>
+                    <h5 class="modal-title mt-0">Edit Data Kelas</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -20,6 +20,17 @@
 						<div class="form-group">
 							<label for="kelas">Nama Kelas</label>
 							<input type="text" class="form-control" id="kelas" value="<?php echo $result->kelas; ?>" name="kelas">
+						</div>
+						<div class="form-group">
+							<label for="target_kelas">Target Kelas/Semester</label>
+							<input type="text" class="form-control" id="target_kelas" value="<?php echo $result->target_kelas; ?>" name="target_kelas">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Nama Kelas</label>
+							<select class="form-control" name="jenis_kelas">
+								<option value="Putra">Putra</option>
+								<option value="Putri">Putri</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<label class="control-label">Sanah Dirasah</label>

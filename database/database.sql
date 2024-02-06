@@ -60,20 +60,6 @@ CREATE TABLE guru (
 	create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- kelas
-CREATE TABLE kelas (
-    kelas_id VARCHAR(36) NOT NULL,
-    guru_id VARCHAR(50),
-    tahun_ajaran_id VARCHAR(50) NOT NULL,
-    kode_kelas VARCHAR(255),
-    kelas VARCHAR(255),
-    PRIMARY KEY (kelas_id),
-    FOREIGN KEY (guru_id) REFERENCES guru(guru_id) ON DELETE SET NULL,
-    FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id),
-    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-
 
 -- tahun ajaran 
 CREATE TABLE tahun_ajaran (
@@ -85,6 +71,22 @@ CREATE TABLE tahun_ajaran (
     PRIMARY KEY (tahun_ajaran_id),
     UNIQUE INDEX idx_tahun_ajaran_kode_tahun (kode_tahun)
 );
+
+-- kelas
+CREATE TABLE kelas (
+    kelas_id VARCHAR(36) NOT NULL,
+    guru_id VARCHAR(50),
+    tahun_ajaran_id VARCHAR(50) NOT NULL,
+    kode_kelas VARCHAR(255),
+    kelas VARCHAR(255),
+    jenis_kelas VARCHAR(255),
+    target_kelas VARCHAR(255),
+    PRIMARY KEY (kelas_id),
+    FOREIGN KEY (guru_id) REFERENCES guru(guru_id) ON DELETE SET NULL,
+    FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id),
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 
 -- target atau kkm
 CREATE TABLE kkm (
