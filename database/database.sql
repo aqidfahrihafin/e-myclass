@@ -15,6 +15,11 @@ CREATE TABLE pesantren (
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO pesantren (pesantren_id, nama_lembaga, nsm, npsm, alamat, kecamatan, kabupaten, provinsi, pimpinan, nip, logo)
+VALUES 
+(MD5('1'), 'Pesantren Apins Digital', '1234567890', '0987654321', 'Jl. Raya Pesantren No. 123', 'Kota', 'Kabupaten A', 'Provinsi X', 'Aqid Fahri Hafin', '1234567890', 'logo.png');
+
+
 
 -- tabel santri
 CREATE TABLE santri (
@@ -44,6 +49,10 @@ CREATE TABLE santri (
 	create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO santri (santri_id, no_induk, nik, no_kk, nama_santri, tempat_lahir, tanggal_lahir, jenis_kelamin, alamat_santri, email, telp_santri, nama_ayah, alamat_ayah, pendidikan_ayah, pekerjaan_ayah, telp_ayah, nama_ibu, alamat_ibu, pendidikan_ibu, pekerjaan_ibu, telp_ibu, photo, status)
+VALUES 
+(MD5('1'), '1234567890', '1234567890123456', '1234567890123456', 'Ali', 'Jakarta', '2000-01-01', 'Laki-laki', 'Jl. Raya No. 123', 'ali@example.com', '081234567890', 'Abdul', 'Jl. Baru No. 456', 'SMA', 'PNS', '081234567891', 'Fatimah', 'Jl. Lama No. 789', 'SMA', 'Ibu Rumah Tangga', '081234567892', 'photo.jpg', 'aktif');
+
 -- tabel guru
 CREATE TABLE guru (
   guru_id VARCHAR(36) PRIMARY KEY,
@@ -60,6 +69,11 @@ CREATE TABLE guru (
   status ENUM('aktif', 'non-aktif'),
 	create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO guru (guru_id, niy, nik, nama_guru, tempat_lahir, tanggal_lahir, jenis_kelamin, alamat_guru, telp_guru, pendidikan, photo, status)
+VALUES 
+(MD5('1'), '1234567890', '1234567890123456', 'apins', 'Jakarta', '1980-01-01', 'Laki-laki', 'Jl. Raya No. 123', '081234567890', 'Sarjana (S1)', 'apins.jpg', 'aktif');
+
 
 
 -- tahun ajaran 
@@ -111,3 +125,26 @@ CREATE TABLE mapel (
 	create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (mapel_id)
 );
+
+-- data ajar
+CREATE TABLE data_ajar (
+  data_ajar_id varchar(36) NOT NULL,
+  kelas_id varchar(36) NOT NULL,
+  guru_id varchar(36) NOT NULL,
+  semester varchar(36) NOT NULL,
+  create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (data_ajar_id),
+  FOREIGN KEY (kelas_id) REFERENCES kelas (kelas_id),
+  FOREIGN KEY (guru_id) REFERENCES guru (guru_id)
+);
+
+-- data semester
+CREATE TABLE semester (
+  semester_id varchar(36) NOT NULL,
+  semester varchar(36) NOT NULL,
+  tahun_ajaran_id varchar(36) NOT NULL,
+  create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (semester_id),
+  FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id)
+);
+

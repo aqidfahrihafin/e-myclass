@@ -6,10 +6,18 @@ class Tahunajaran extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('TahunAjaranModel');
+        $this->load->model('SemesterModel');
     }
 
 	public function index() {
 		$data['title'] = 'Sanah Dirasah';
+
+		$semester = $this->SemesterModel->get_all_semester();
+		if ($semester) {
+				$data['semester'] = $semester;
+			} else {
+				$data['semester'] = null;
+		}
 
 		$data['tahun_ajaran'] = $this->TahunAjaranModel->get_all_tahun_ajaran();
         $data['content_view'] = 'admin/tahunajaran/index';

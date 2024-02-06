@@ -1,5 +1,3 @@
-<!-- application/views/admin/pembimbing/cetak.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cetak Data Guru</title>
     <style>
-        /* Tambahkan gaya cetak di sini */
         @media print {
-            /* Contoh gaya, sesuaikan sesuai kebutuhan */
             body {
                 font-size: 12;
                 margin: 0; /* Hapus margin default body */
@@ -79,7 +75,7 @@
 						<td><?php echo $result['pendidikan']; ?></td>
 						<td><?php echo $result['telp_guru']; ?></td>
 						<td align="center">
-							<?php echo ($result['status'] == 'aktif') ? 'success' : 'danger'; ?>"><?php echo $result['status']; ?>
+							<?php echo $result['status']; ?>
 						</td>
 					</tr>
 				<?php }?>
