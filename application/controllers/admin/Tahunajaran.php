@@ -51,7 +51,8 @@ class Tahunajaran extends CI_Controller {
         redirect('tahunajaran');
     }
 
-    public function delete($tahun_ajaran_id) {
+    public function delete() {
+		$tahun_ajaran_id = $this->input->post('tahun_ajaran_id');
         $this->TahunAjaranModel->delete_tahun_ajaran($tahun_ajaran_id);
 		$this->session->set_flashdata('alert', '<div class="alert  alert-info">Data berhasil di hapus !</div>');
         $this->session->set_flashdata('alert_timeout', 4000);

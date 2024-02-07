@@ -30,7 +30,7 @@
 						</div>
 						<hr>
 						<div align="right">
-							<button type="submit" class="btn btn-primary w-md">Submit</button>
+							<button type="submit" class="btn btn-primary btn-sm  w-md">Submit</button>
 						</div>
 					</form>
                 </div>

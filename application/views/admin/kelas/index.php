@@ -65,7 +65,7 @@
 										</tr>
 									<?php	} } else {?>
 									<tr>
-										<td colspan="6" align="center">Tidak ada data kelas.</td>
+										<td colspan="7" align="center">Tidak ada data kelas.</td>
 									</tr>
 							<?php }?>
                           </tbody>

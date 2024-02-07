@@ -62,7 +62,7 @@
                             <?php if ($semester): ?>
                                 <input type="hidden" class="form-control" value="<?php echo $semester->semester_id; ?>" name="semester_id" id="semester_id">
                             <?php endif; ?>
-                            <select class="form-control" name="tahun_ajaran_id">
+                            <select class="form-control form-control-sm" name="tahun_ajaran_id">
                                 <?php usort($tahun_ajaran, function($a, $b) { return strcmp($b->tahun_ajaran_id, $a->tahun_ajaran_id); });
                                 foreach ($tahun_ajaran as $tahun): ?>
                                     <option value="<?php echo $tahun->tahun_ajaran_id; ?>"><?php echo $tahun->nama_tahun; ?></option>
@@ -71,14 +71,14 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Semester</label>
-                            <select class="form-control" name="semester">
+                            <select class="form-control form-control-sm" name="semester">
                                 <option value="Ganjil" <?php echo ($semester && $semester->semester == 'Ganjil') ? 'selected' : ''; ?>>Ganjil</option>
                                 <option value="Genap" <?php echo ($semester && $semester->semester == 'Genap') ? 'selected' : ''; ?>>Genap</option>
                             </select>
                         </div>
                         <hr>
                         <div align="right">
-                            <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-sm w-md">Submit</button>
                         </div>
                     </form>     
                 </div>
@@ -128,7 +128,7 @@
                                             <button type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="modal" data-target=".tahunajaran<?php echo $tahun->tahun_ajaran_id; ?>">
                                                 <i class="mdi mdi-pencil"></i>
                                             </button>
-                                            <button type="button" class="btn btn-danger waves-effect waves-light btn-sm" onclick="hapusTahunAjaran('<?php echo $tahun->tahun_ajaran_id; ?>')">
+                                            <button type="button" class="btn btn-danger waves-effect waves-light btn-sm" data-toggle="modal" data-target=".deletetahunajaran<?php echo $tahun->tahun_ajaran_id; ?>">
                                                 <i class="mdi mdi-trash-can"></i>
                                             </button>
                                         </td>
@@ -140,13 +140,6 @@
                             <?php endif; ?>
                         </tbody>
                     </table>
-                    <script>
-                        function hapusTahunAjaran(tahunAjaranId) {
-                            if (confirm('Anda yakin ingin menghapus tahun ajaran ini?')) {
-                                window.location.href = '<?= site_url('admin/tahunajaran/delete/'); ?>' + tahunAjaranId;
-                            }
-                        }
-                    </script>
                 </div>
             </div>
         </div>
@@ -156,3 +149,4 @@
 
 <?php $this->load->view('admin/tahunajaran/edit');?>
 <?php $this->load->view('admin/tahunajaran/add');?>
+<?php $this->load->view('admin/tahunajaran/delete');?>

@@ -98,7 +98,7 @@ CREATE TABLE kelas (
     target_kelas VARCHAR(255),
     PRIMARY KEY (kelas_id),
     FOREIGN KEY (guru_id) REFERENCES guru(guru_id) ON DELETE SET NULL,
-    FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id),
+    FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id) ON DELETE CASCADE,
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -113,7 +113,7 @@ CREATE TABLE kkm (
   create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (kkm_id),
   FOREIGN KEY (kelas_id) REFERENCES kelas (kelas_id),
-  FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id)
+  FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id)  ON DELETE CASCADE
 );
 
 
@@ -145,6 +145,6 @@ CREATE TABLE semester (
   tahun_ajaran_id varchar(36) NOT NULL,
   create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (semester_id),
-  FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id)
+  FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id) ON DELETE CASCADE
 );
 
