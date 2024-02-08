@@ -148,3 +148,27 @@ CREATE TABLE semester (
   FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id) ON DELETE CASCADE
 );
 
+-- tabel user
+CREATE TABLE users (
+  user_id varchar(36) NOT NULL,
+  username varchar(36) NOT NULL,
+  password varchar(255) NOT NULL,
+  create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	role ENUM('admin', 'guru','wali','pembimbing') DEFAULT 'guru',
+  PRIMARY KEY (user_id),
+	FOREIGN KEY (user_id) REFERENCES guru (guru_id) ON DELETE CASCADE
+);
+
+-- tabel users profile
+CREATE TABLE users_profile (
+  users_profile_id varchar(36) NOT NULL,
+  user_id varchar(36)  NULL,
+  guru_id varchar(36)  NULL,
+  santri_id varchar(36) NULL,
+  create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (users_profile_id),
+  FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE,
+  FOREIGN KEY (guru_id) REFERENCES guru (guru_id) ON DELETE CASCADE,
+  FOREIGN KEY (santri_id) REFERENCES santri (santri_id) ON DELETE CASCADE
+);
+

@@ -1,5 +1,5 @@
 <?php $no = 1; foreach ($guru as $result) {?>
- <div class="modal fade kelas<?php echo $result['guru_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+ <div class="modal fade guru<?php echo $result['guru_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -63,13 +63,13 @@
                             <label for="alamat">Alamat</label>
                             <textarea class="form-control" name="alamat_guru"  id="alamat"><?php echo $result['alamat_guru']; ?></textarea>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="control-label">Status</label>
                             <select class="form-control" name="status" required="">
                                 <option value="aktif">Aktif</option>
                                 <option value="non-aktif">Non Aktif</option>
                             </select>
-                        </div>
+                        </div> -->
                   </div>
 
                 <div class="modal-footer">

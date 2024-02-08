@@ -10,6 +10,8 @@
     <meta content="E-Raport" name="Aqid Fahri Hafin">
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?php echo base_url('public/assets/');?>images/logo1.png">
+
+	<link href="<?php echo base_url('public/assets/');?>libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css">
     <!-- DataTables -->
     <link href="<?php echo base_url('public/assets/');?>libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('public/assets/');?>libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">

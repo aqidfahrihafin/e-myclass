@@ -17,6 +17,7 @@
                         <div class="float-right">
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<a target="_blank" href="<?php echo site_url('admin/guru/cetak'); ?>"class="btn btn-danger btn-sm"><i class="bx bx-printer label-icon"></i></a>
+								<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=".importguru"><i class="mdi mdi-cloud-upload"></i></button>
 								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".addguru"><i class="bx bx-plus"></i></button>
 							</div>
                         </div>
@@ -52,12 +53,23 @@
 											<span class="badge badge-pill badge-<?php echo ($result['status'] == 'aktif') ? 'success' : 'danger'; ?> font-size-8"><?php echo $result['status']; ?></span>
 										</td>
 										<td align="center">
-											<button type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="modal" data-target=".kelas<?php echo $result['guru_id'] ?>">
+											<div class="btn-group" role="group" aria-label="Basic example">
+												<?php if ($result['status'] == 'aktif'): ?>
+													<button type="button" class="btn btn-success btn-sm waves-effect waves-light" data-toggle="modal" data-target=".updateuser<?php echo $result['guru_id'] ?>">
+														<i class="mdi mdi-checkbox-marked-outline"></i>
+													</button>
+												<?php else: ?>
+													<button type="button" class="btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target=".adduser<?php echo $result['guru_id'] ?>">
+														<i class="mdi mdi-account-plus"></i>
+													</button>
+												<?php endif; ?>
+											    <button type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="modal" data-target=".guru<?php echo $result['guru_id'] ?>">
 													<i class="mdi mdi-pencil"></i>
 												</button>
 												<button type="button" class="btn btn-danger waves-effect waves-light btn-sm" onclick="hapusguru('<?php echo $result['guru_id']; ?>')">
 													<i class="mdi mdi-trash-can"></i>
 												</button>
+											 </div>
 											</td>
 										</td>
 									</tr>
@@ -79,4 +91,7 @@
     <!-- end row -->
 <?php $this->load->view('admin/guru/add');?>
 <?php $this->load->view('admin/guru/edit');?>
+<?php $this->load->view('admin/guru/adduser');?>
+<?php $this->load->view('admin/guru/updateuser');?>
+<?php $this->load->view('admin/guru/importguru');?>
 

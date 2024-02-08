@@ -8,17 +8,17 @@
                       <li class="nav-item">
                           <a class="nav-link  arrow-none" href="<?php echo base_url('/dashboard');?>" id="topnav-dashboard" role="button"
                               aria-expanded="false">
-                              <i class="bx bx-home-circle mr-2"></i>Dashboard </a>
+                              <i class="mdi mdi-home-variant mr-2"></i>Dashboard </a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link  arrow-none" href="<?php echo base_url('/pesantren');?>" id="topnav-dashboard"
                               aria-expanded="false">
-                              <i class="bx bx-user mr-2"></i>Profil Pesantren </a>
+                              <i class="mdi mdi-account mr-2"></i>Profil Pesantren </a>
                       </li>
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard"
                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="bx bx-customize mr-2"></i>Lembaga <div class="arrow-down"></div>
+                              <i class="mdi mdi-domain mr-2"></i>Lembaga <div class="arrow-down"></div>
                           </a>
                           <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
@@ -31,7 +31,7 @@
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard"
                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="bx bx-customize mr-2"></i>Guru <div class="arrow-down"></div>
+                              <i class="mdi mdi-account-multiple-plus mr-2"></i>Guru <div class="arrow-down"></div>
                           </a>
                           <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
@@ -44,7 +44,7 @@
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard"
                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="bx bx-customize mr-2"></i>Santri <div class="arrow-down"></div>
+                              <i class="mdi mdi-account-switch mr-2"></i>Santri <div class="arrow-down"></div>
                           </a>
                           <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
@@ -58,7 +58,7 @@
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard"
                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="bx bx-customize mr-2"></i>Raport <div class="arrow-down"></div>
+                              <i class="mdi mdi-server-network mr-2"></i>Raport <div class="arrow-down"></div>
                           </a>
                           <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                               <a href="#" class="dropdown-item">Pengaturan Cetak</a>
@@ -69,7 +69,7 @@
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard"
                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="bx bx-user mr-2"></i>Admin App <div class="arrow-down"></div>
+                              <i class="mdi mdi-account-key mr-2"></i>Admin App <div class="arrow-down"></div>
                           </a>
                           <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                               <a href="#" class="dropdown-item">Data Admin</a>

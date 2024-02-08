@@ -25,9 +25,6 @@ class GuruModel extends CI_Model {
 		return $query->result();
 	}
 
-
-
-
 	public function insert_guru($data) {
         $this->db->insert('guru', $data);
     }
@@ -61,8 +58,34 @@ class GuruModel extends CI_Model {
         $this->db->update('guru', $data);
     }
 
+	public function update_status($guru_id, $data_guru) {
+        $this->db->where('guru_id', $guru_id);
+        $this->db->update('guru', $data_guru);
+    }
+
 	public function delete_guru($guru_id) {
         $this->db->delete('guru', array('guru_id' => $guru_id));
     }
+
+	public function import_data($importguru) {
+		if (empty($importguru)) {
+			return false; 
+		}
+		$this->db->trans_start();
+		foreach ($importguru as $data) {
+			$this->db->replace('guru', $data);
+		}
+		$this->db->trans_complete();
+
+		return $this->db->trans_status();
+	}
+
+	public function isNikExists($nik) {
+		$this->db->where('nik', $nik);
+		$query = $this->db->get('guru');
+		return $query->num_rows() > 0;
+	}
+
+
 
 }?>

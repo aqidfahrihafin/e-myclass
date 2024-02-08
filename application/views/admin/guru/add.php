@@ -61,13 +61,13 @@
                             <label for="alamat">Alamat</label>
                             <textarea class="form-control" name="alamat_guru" id="alamat"></textarea>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="control-label">Status</label>
                             <select class="form-control" name="status" required="">
                                 <option value="aktif">Aktif</option>
                                 <option value="non-aktif">Non Aktif</option>
                             </select>
-                        </div>
+                        </div> -->
                   </div>
 
                 <div class="modal-footer">

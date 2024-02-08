@@ -46,6 +46,10 @@
 <script src="<?php echo base_url('public/assets/');?>js/pages/datatables.init.js"></script>
 
 <script src="<?php echo base_url('public/assets/');?>js/app.js"></script>
+   
+<script src="<?php echo base_url('public/assets/');?>libs/dropzone/min/dropzone.min.js"></script>
+
+
 </body>
 
 </html>
