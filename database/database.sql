@@ -46,7 +46,12 @@ CREATE TABLE santri (
   telp_ibu VARCHAR(20),
   photo VARCHAR(255),
   status ENUM('aktif', 'keluar', 'lulus', 'tidak_lulus'),
-	create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	tahun_ajaran_id VARCHAR(100)  NULL,
+	tanggal_masuk VARCHAR(100)  NULL,
+	tanggal_keluar VARCHAR(100)  NULL,
+	alasan_keluar VARCHAR(100)  NULL,
+	create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (tahun_ajaran_id) REFERENCES tahun_ajaran (tahun_ajaran_id)
 );
 
 INSERT INTO santri (santri_id, no_induk, nik, no_kk, nama_santri, tempat_lahir, tanggal_lahir, jenis_kelamin, alamat_santri, email, telp_santri, nama_ayah, alamat_ayah, pendidikan_ayah, pekerjaan_ayah, telp_ayah, nama_ibu, alamat_ibu, pendidikan_ibu, pekerjaan_ibu, telp_ibu, photo, status)
@@ -65,6 +70,7 @@ CREATE TABLE guru (
   alamat_guru TEXT,
   telp_guru VARCHAR(20),
   pendidikan VARCHAR(20),
+  qrcode VARCHAR(255),
   photo VARCHAR(255),
   status ENUM('aktif', 'non-aktif'),
 	create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -170,5 +176,33 @@ CREATE TABLE users_profile (
   FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE,
   FOREIGN KEY (guru_id) REFERENCES guru (guru_id) ON DELETE CASCADE,
   FOREIGN KEY (santri_id) REFERENCES santri (santri_id) ON DELETE CASCADE
+);
+
+-- tabel prestasi
+CREATE TABLE prestasi (
+    prestasi_id VARCHAR(36) NOT NULL,
+    santri_id VARCHAR(36) NOT NULL,
+    jenis_prestasi VARCHAR(20) NULL,
+    tingkat_prestasi VARCHAR(20) NULL,
+    nama_prestasi VARCHAR(100) NULL,
+    tahun_prestasi VARCHAR(10) NULL,
+    penyelenggara VARCHAR(100) NULL,
+    peringkat VARCHAR(100) NULL,
+    PRIMARY KEY (prestasi_id),
+		FOREIGN KEY (santri_id) REFERENCES santri (santri_id) ON DELETE CASCADE
+);
+
+-- tabel beasiswa
+CREATE TABLE beasiswa (
+    beasiswa_id VARCHAR(36) NOT NULL,
+    santri_id VARCHAR(36) NOT NULL,
+    jenis_beasiswa VARCHAR(20) NULL,
+    perguruan_tinggi VARCHAR(255) NULL,
+    negara_tujuan VARCHAR(255) NULL,
+    skala ENUM('Dalam Negri', 'Luar Negri'),
+    tahun_mulai VARCHAR(10) NULL,
+    tahun_selesai VARCHAR(10) NULL,
+    PRIMARY KEY (beasiswa_id),
+		FOREIGN KEY (santri_id) REFERENCES santri (santri_id) ON DELETE CASCADE
 );
 

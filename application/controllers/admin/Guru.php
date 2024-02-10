@@ -9,6 +9,7 @@ class Guru extends CI_Controller {
         parent::__construct();
         $this->load->model('GuruModel');
         $this->load->model('AuthModel');
+        $this->load->model('UsersModel');
     }
 
 	public function index() {
@@ -51,8 +52,8 @@ class Guru extends CI_Controller {
 			'alamat_guru' => $this->input->post('alamat_guru'),
 			'telp_guru'  => $this->input->post('telp_guru'),
 			'pendidikan'  => $this->input->post('pendidikan'),
-			'photo'  => 'default.png',
-			'status' => $this->input->post('status'),
+			'photo'  => 'user.png',
+			'status' => 'non-aktif',
 		);
 
 		$this->GuruModel->insert_guru($data);
@@ -92,7 +93,7 @@ class Guru extends CI_Controller {
 							'tanggal_lahir'  => $tanggal_lahir,
 							'telp_guru'  => $row->getCellAtIndex(8)->getValue(),
 							'alamat_guru'  => $row->getCellAtIndex(9)->getValue(),
-							'photo'  => $row->getCellAtIndex(10)->getValue(),
+							'photo'  => 'user.png',
 							'status' => 'non-aktif',
 							'guru_id' => md5(uniqid(rand(), true)) 
 						);
@@ -140,7 +141,6 @@ class Guru extends CI_Controller {
             'alamat_guru' => $this->input->post('alamat_guru'),
             'telp_guru' => $this->input->post('telp_guru'),
 			'pendidikan'  => $this->input->post('pendidikan'),
-            'status' => 'non-aktif',
         );
 
         $this->GuruModel->update_guru($guru_id, $data);
@@ -149,12 +149,20 @@ class Guru extends CI_Controller {
         redirect('guru');
     }
 
-    public function delete($guru_id) {
-        $this->GuruModel->delete_guru($guru_id);
-		$this->session->set_flashdata('alert', '<div class="alert  alert-info">Data berhasil di hapus !</div>');
-        $this->session->set_flashdata('alert_timeout', 4000);
-        redirect('guru');
-    }
+    public function delete($guru_id) {		
+		$this->GuruModel->delete_guru($guru_id);
+		$this->session->set_flashdata('alert', '<div class="alert  alert-info">Data berhasil dihapus!</div>');
+		$this->session->set_flashdata('alert_timeout', 4000);
+		redirect('guru');
+	}
+
+	private function logout() {
+		$this->session->sess_destroy();
+		$this->session->set_flashdata('alert', '<div class="alert  alert-info">Anda berhasil logout!</div>');
+		$this->session->set_flashdata('alert_timeout', 4000);
+		redirect('login');
+	}
+
 
 	public function cetak() {
 		$data['title'] = 'Cetak Data Guru';
@@ -175,7 +183,7 @@ class Guru extends CI_Controller {
 			
 			$guru_id = $this->input->post('guru_id');
 			$username = $this->input->post('username');
-			$role = 'guru';
+			$role = $this->input->post('role');
 			$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
 			$data_users = array(

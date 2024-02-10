@@ -2,7 +2,7 @@
 				<div class="col-lg-12">
 					<div class="alert alert-primary alert-dismissible fade show" role="alert">
 						<i class="mdi mdi-bullseye-arrow mr-2"></i>
-								Hi ! <b>Aqid Fahri</b> selamat datang di E-Raport
+								Hi ! <b><?php echo $user_data->nama_guru; ?></b> selamat datang di E-Raport
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>

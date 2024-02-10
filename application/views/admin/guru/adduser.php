@@ -32,6 +32,19 @@
 								</tr>
 							</tbody>
 						</table>
+						
+						<div class="form-group">
+							<div class="custom-control custom-radio custom-radio-outline custom-radio-primary mb-3" style="display: inline-block; margin-right: 20px;">
+								<input type="radio" class="custom-control-input" id="guru<?php echo $result['guru_id'] ?>" name="role" value="guru" required="wajib diisi">
+								<label class="custom-control-label" for="guru<?php echo $result['guru_id'] ?>">Guru</label>
+							</div>
+							<div class="custom-control custom-radio custom-radio-outline custom-radio-primary mb-3" style="display: inline-block;">
+								<input type="radio" class="custom-control-input" id="pembimbing<?php echo $result['guru_id'] ?>" name="role" value="pembimbing" required="wajib diisi">
+								<label class="custom-control-label" for="pembimbing<?php echo $result['guru_id'] ?>">Pembimbing</label>
+							</div>
+						</div>
+
+
                   </div>
 
                 <div class="modal-footer">

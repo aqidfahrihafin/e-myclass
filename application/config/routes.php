@@ -23,6 +23,11 @@ $route['datamengajar'] = 'admin/datamengajar/index';
 
 //route santri
 $route['santri'] = 'admin/santri/index';
+$route['alumni'] = 'admin/santri/alumni';
+
+// users
+$route['users'] = 'admin/users/index';
+$route['profil'] = 'admin/profil/index';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

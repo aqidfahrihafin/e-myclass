@@ -6,41 +6,49 @@ class Home extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('AuthModel');
+		$this->load->model('PesantrenModel');
+		$this->data['pesantren'] = $this->PesantrenModel->get_pesantren();
     }
 
 	public function index() {
-		$data['title'] = 'Home Page';
-
-        $this->load->view('auth/home', $data);
+		$this->data['title'] = 'Home Page';
+        $this->load->view('auth/home', $this->data);
 	}
 
 	public function lupapw() {
-		$data['title'] = 'Halaman Lupa Password';
+		$this->data['title'] = 'Halaman Lupa Password';
 
-        $this->load->view('auth/lupa-pw', $data);
+        $this->load->view('auth/lupa-pw', $this->data);
 	}
 
 
 	public function login() {
-		$data['title'] = 'Halaman Login';
+		$this->data['title'] = 'Halaman Login';
 
-        $this->load->view('auth/login', $data);
+        $this->load->view('auth/login', $this->data);
 	}
 
 	public function proses_login() {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
 
-        $this->load->model('AuthModel');
-        $user = $this->AuthModel->login($username, $password);
-        if ($user) {
-            $this->session->set_userdata('user_id', $user->user_id);
-            redirect('dashboard');
-        } else {
-            $data['error'] = 'Invalid username or password';
-            $this->load->view('login', $data);
-        }
-    }
+		$this->load->model('AuthModel');
+		$user = $this->AuthModel->login($username, $password);
+		if ($user) {
+			// Set user_id dan role di sesi
+			$this->session->set_userdata('user_id', $user->user_id);
+			$this->session->set_userdata('role', $user->role);
+
+			$this->session->set_flashdata('alert', '<div class="alert  alert-info">Data berhasil di tambahkan !</div>');
+       		$this->session->set_flashdata('alert_timeout', 4000);
+			redirect('dashboard');
+		} else {
+			$this->session->set_flashdata('alert', '<div class="alert  alert-danger">Username atau password salah !</div>');
+            $this->session->set_flashdata('alert_timeout', 4000);
+			redirect('login');
+		}
+	}
+
 
 	public function proses_registrasi() {
 
@@ -66,14 +74,17 @@ class Home extends CI_Controller {
 
             $this->AuthModel->register($data);
 
-            $this->session->set_flashdata('sukses', 'Registrasi berhasil, silahkan login !');
+            $this->session->set_flashdata('alert', '<div class="alert  alert-info">Data berhasil di tambahkan !</div>');
        		$this->session->set_flashdata('alert_timeout', 4000);
             redirect('login');
         }
     }
 
     public function logout() {
+		
+		$this->session->set_flashdata('alert', '<div class="alert  alert-info">Anda berhasil logout !</div>');
+		$this->session->set_flashdata('alert_timeout', 4000);
         $this->session->sess_destroy();
-        redirect('login');
+        redirect('login?alert=logout');
     }
 }

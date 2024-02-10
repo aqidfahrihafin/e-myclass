@@ -32,7 +32,7 @@
 							</div>
 							<div class="form-group">
 								<label for="nama">Nama Lengkap</label>
-								<input type="text" class="form-control" id="nama" name="nama_guru"  required="">
+								<input type="text" class="form-control" id="nama" name="nama_santri"  required="">
 							</div>
 							<div class="form-group">
 								<label class="control-label">Jenis Kelamin</label>
@@ -59,11 +59,25 @@
 							</div>
 							<div class="form-group">
 								<label for="alamat">Alamat</label>
-								<textarea class="form-control" name="alamat_guru" id="alamat"></textarea>
+								<textarea class="form-control" name="alamat_santri" id="alamat"></textarea>
+							</div>
+							<label for=""> <span class="badge badge-pill badge-success font-size-8">Data Registrasi Santri</span></label>
+							<div class="form-group">
+								<label for="tgl_masuk">Tanggal Masuk</label>
+								<input type="date" class="form-control" id="tgl_masuk" name="tanggal_masuk"  required="">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<!-- Kolom 2 -->
+							<div class="form-group">
+								<label class="control-label">Sanah Dirasah</label>
+								<select class="form-control" name="tahun_ajaran_id">
+									<?php usort($tahunajaran, function($a, $b) { return strcmp($b->tahun_ajaran_id, $a->tahun_ajaran_id);});
+										foreach ($tahunajaran as $tahun) {?>
+										<option value="<?php echo $tahun->tahun_ajaran_id; ?>"><?php echo $tahun->nama_tahun; ?></option>
+									<?php }?>
+								</select>
+							</div>
 							<label for=""> <span class="badge badge-pill badge-primary font-size-8">Data Ayah</span></label>
 							<div class="form-group">
 								<label for="nama_ayah">Nama Ayah</label>

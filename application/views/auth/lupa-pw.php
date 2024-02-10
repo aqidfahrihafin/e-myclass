@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="en">
-
+<?php foreach ($pesantren as $result): ?>
 <head>
-
     <meta charset="utf-8">
     <title><?php echo $title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
     <meta content="E-Raport" name="Aqid Fahri Hafin">
-    <link rel="shortcut icon" href="<?php echo base_url('public/assets/');?>images/logo1.png">
+    <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result['logo']); ?>">
     <link href="<?php echo base_url('public/assets/');?>css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('public/assets/');?>css/icons.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('public/assets/');?>css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
@@ -16,7 +15,6 @@
 </head>
 
 <body>
-
     <div class="account-pages my-5 pt-sm-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -27,7 +25,7 @@
                                 <div class="col-7">
                                     <div class="text-primary p-4">
                                         <h5 class="text-primary"> Reset Password</h5>
-                                        <p>Re-Password with E-Raport LPTQ Matsaratul Huda.</p>
+                                        <p>Re-Password with E-Raport <?php echo $result['nama_lembaga']; ?>.</p>
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
@@ -40,7 +38,7 @@
                                 <a href="<?php echo base_url('');?>">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="<?php echo base_url('public/assets/');?>images/logo1.png" alt=""
+                                            <img src="<?php echo base_url('upload/logo/'.$result['logo']); ?>" alt=""
                                                 class="rounded-circle" height="34">
                                         </span>
                                     </div>
@@ -74,9 +72,7 @@
                     <div class="mt-5 text-center">
 
                         <div>
-                            <p>Remember It ? <a href="{{ '/login' }}" class="font-weight-medium text-primary"> Sign
-                                    In
-                                    here</a> </p>
+                            <p>Remember It ? <a href="<?php echo base_url('login');?>" class="font-weight-medium text-primary"> Sign In here</a> </p>
                             <p>©
                                 <script>
                                     document.write(new Date().getFullYear())
@@ -100,5 +96,5 @@
 
     <script src="<?php echo base_url('public/assets/');?>js/app.js"></script>
 </body>
-
+<?php endforeach; ?>
 </html>

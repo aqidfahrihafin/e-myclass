@@ -1,4 +1,4 @@
- <div class="modal fade importguru" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+ <div class="modal fade importsantri" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -8,10 +8,10 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-				<?= form_open_multipart('admin/guru/importguru') ?>
+				<?= form_open_multipart('admin/santri/importsantri') ?>
                 <div class="modal-body">
 					<div class="alert alert-primary" role="alert" align="justify">
-							Unduh  <a href="<?php echo base_url('upload/import/importguru.xlsx'); ?>"> contoh template</a> untuk melihat contoh format yang diperlukan.
+							Unduh  <a href="<?php echo base_url('upload/import/importsantri.xlsx'); ?>"> contoh template</a> untuk melihat contoh format yang diperlukan.
 					</div>
 					<div class="form-group">
 						<input type="file" class="form-control" id="nik" required name="importexcel" accept=".xlsx">

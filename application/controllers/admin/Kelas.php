@@ -4,10 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Kelas extends CI_Controller {
 
 	public function __construct() {
-        parent::__construct();
-        $this->load->model('KelasModel');
-        $this->load->model('GuruModel');
-        $this->load->model('TahunAjaranModel');
+		parent::__construct();
+		$this->load->model('KelasModel');
+		$this->load->model('GuruModel');
+		$this->load->model('TahunAjaranModel');
+		if (!$this->session->userdata('user_id')) {
+			$this->session->set_flashdata('alert', '<div class="alert  alert-danger">Maaf anda belum login !</div>');
+            $this->session->set_flashdata('alert_timeout', 4000);
+			redirect('login');
+		}
     }
 
 	public function index() {

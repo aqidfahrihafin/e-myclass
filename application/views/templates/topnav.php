@@ -11,9 +11,9 @@
                               <i class="mdi mdi-home-variant mr-2"></i>Dashboard </a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link  arrow-none" href="<?php echo base_url('/pesantren');?>" id="topnav-dashboard"
+                          <a class="nav-link  arrow-none" href="<?php echo base_url('/profil');?>" id="topnav-dashboard"
                               aria-expanded="false">
-                              <i class="mdi mdi-account mr-2"></i>Profil Pesantren </a>
+                              <i class="mdi mdi-account mr-2"></i>Profil </a>
                       </li>
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard"
@@ -22,6 +22,7 @@
                           </a>
                           <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
+                              <a href="<?php echo base_url('/pesantren');?>" class="dropdown-item">Profil Pesantren </a>
                               <a href="<?php echo base_url('/tahunajaran');?>" class="dropdown-item">Sanah Dirasah</a>
                               <a href="<?php echo base_url('/kelas');?>" class="dropdown-item">Data Kelas</a>
                               <a href="<?php echo base_url('/mapel');?>" class="dropdown-item">Mata Pelajaran</a>
@@ -72,7 +73,7 @@
                               <i class="mdi mdi-account-key mr-2"></i>Admin App <div class="arrow-down"></div>
                           </a>
                           <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
-                              <a href="#" class="dropdown-item">Data Admin</a>
+                              <a href="<?php echo base_url('/users');?>" class="dropdown-item">Data Users</a>
                               <a href="#" class="dropdown-item">Backup & Restore</a>
                           </div>
                       </li>

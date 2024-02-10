@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+<?php foreach ($pesantren as $result): ?>
 <head>
 
     <meta charset="utf-8">
@@ -9,8 +9,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
     <meta content="Themesbrand" name="author">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="<?php echo base_url('public/assets/');?>images/favicon.ico">
-
+    <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result['logo']); ?>">
     <!-- owl.carousel css -->
     <link rel="stylesheet" href="<?php echo base_url('public/assets/');?>libs/owl.carousel/assets/owl.carousel.min.css">
 
@@ -30,8 +29,8 @@
     <nav class="navbar navbar-expand-lg navigation fixed-top sticky">
         <div class="container">
             <a class="navbar-logo" href="<?php echo base_url('/');?>">
-                <img src="<?php echo base_url('public/assets/');?>images/logo/dark.png" alt="" height="35" class="logo logo-dark">
-                <img src="<?php echo base_url('public/assets/');?>images/logo/light.png" alt="" height="35" class="logo logo-light">
+                <img src="<?php echo base_url('upload/logo/'.$result['logo']); ?>" alt="" height="35" class="logo logo-dark">
+                <img src="<?php echo base_url('upload/logo/'.$result['logo']); ?>" alt="" height="35" class="logo logo-light">
             </a>
 
             <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
@@ -65,14 +64,14 @@
                 <div class="col-lg-5">
                     <div class="text-white-50">
                         <h1 class="text-white font-weight-semibold mb-3 hero-title">E-Raport Digital Pondok Pesantren
-                            Apins Digital</h1>
+                            <?php echo $result['nama_lembaga']; ?></h1>
                         <p class="font-size-14">Aplikasi Raport Digital diharapkan dapat mendukung program Pesantren
-                            Digital di, agar dapat memberikan layanan yang cepat, tepat dan akurat kepada seluruh
+                            Digital, agar dapat memberikan layanan yang cepat, tepat dan akurat kepada seluruh
                             warga pesantren.
                             Amin.....!!!</p>
 
                         <div class="button-items mt-4">
-                            <a href="<?php echo base_url('register');?>" class="btn btn-success">Register Now</a>
+                            <a href="#" class="btn btn-success">Register Now</a>
                             <a href="<?php echo base_url('login');?>" class="btn btn-light">Login</a>
                         </div>
                     </div>
@@ -187,7 +186,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="mb-4">
-                        <img src="<?php echo base_url('public/assets/');?>images/logo/dark.png" alt="" height="35">
+                        <img src="<?php echo base_url('upload/logo/'.$result['logo']); ?>" alt="" height="35">
                     </div>
 
                     <p class="mb-2">2023 © E-Raport. Design & Develop by Aqid Fahri Hafin</p>
@@ -207,20 +206,13 @@
     <script src="<?php echo base_url('public/assets/');?>libs/metismenu/metisMenu.min.js"></script>
     <script src="<?php echo base_url('public/assets/');?>libs/simplebar/simplebar.min.js"></script>
     <script src="<?php echo base_url('public/assets/');?>libs/node-waves/waves.min.js"></script>
-
     <script src="<?php echo base_url('public/assets/');?>libs/jquery.easing/jquery.easing.min.js"></script>
-
-    <!-- Plugins js-->
     <script src="<?php echo base_url('public/assets/');?>libs/jquery-countdown/jquery.countdown.min.js"></script>
-
-    <!-- owl.carousel js -->
     <script src="<?php echo base_url('public/assets/');?>libs/owl.carousel/owl.carousel.min.js"></script>
-
-    <!-- ICO landing init -->
     <script src="<?php echo base_url('public/assets/');?>js/pages/ico-landing.init.js"></script>
-
     <script src="<?php echo base_url('public/assets/');?>js/app.js"></script>
 
 </body>
 
+<?php endforeach; ?>
 </html>
