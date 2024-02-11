@@ -66,7 +66,7 @@
 														<i class="mdi mdi-checkbox-marked-outline"></i>
 													</button>
 												<?php else: ?>
-													<button type="button" class="btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target=".addsantri<?php echo $result->santri_id ?>">
+													<button type="button" class="btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target=".adduser<?php echo $result->santri_id ?>">
 														<i class="mdi mdi-account-plus"></i>
 													</button>
 												<?php endif; ?>
@@ -95,5 +95,6 @@
     </div>
     <!-- end row -->
 	<?php $this->load->view('admin/santri/add');?>
+	<?php $this->load->view('admin/santri/adduser');?>
 	<?php $this->load->view('admin/santri/edit');?>
 	<?php $this->load->view('admin/santri/importsantri');?>

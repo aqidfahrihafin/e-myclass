@@ -178,6 +178,24 @@ CREATE TABLE users_profile (
   FOREIGN KEY (santri_id) REFERENCES santri (santri_id) ON DELETE CASCADE
 );
 
+-- guru profil
+CREATE TABLE guru_profile (
+  guru_profile_id VARCHAR(36) PRIMARY KEY,
+  user_id VARCHAR(36) NOT NULL,
+  guru_id varchar(36)  NULL,
+  FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE,
+	FOREIGN KEY (guru_id) REFERENCES guru (guru_id) ON DELETE CASCADE
+);
+
+-- santri profile
+CREATE TABLE santri_profile (
+  santri_profile_id VARCHAR(36) PRIMARY KEY,
+  user_id VARCHAR(36) NOT NULL,
+  santri_id varchar(36) NULL,
+  FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE,
+	FOREIGN KEY (santri_id) REFERENCES santri (santri_id) ON DELETE CASCADE
+);
+
 -- tabel prestasi
 CREATE TABLE prestasi (
     prestasi_id VARCHAR(36) NOT NULL,

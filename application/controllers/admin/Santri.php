@@ -6,6 +6,7 @@ class Santri extends CI_Controller {
 	public function __construct() {
         parent::__construct();
 			$this->load->model('SantriModel');
+			$this->load->model('AuthModel');
 			$this->load->model('UsersModel');
 			$this->load->model('TahunAjaranModel');
 				if (!$this->session->userdata('user_id')) {
@@ -143,6 +144,49 @@ class Santri extends CI_Controller {
 		$this->session->set_flashdata('alert', '<div class="alert alert-info">Data berhasil diperbarui!</div>');
 		$this->session->set_flashdata('alert_timeout', 4000);
 		redirect('santri');
+	}
+
+	public function reg_user() {
+
+		$this->form_validation->set_rules('username', 'username', 'required|trim|is_unique[users.username]');
+
+		if ($this->form_validation->run() === false) {
+			$this->session->set_flashdata('alert', '<div class="alert  alert-danger">Gagal aktifkan user, Username sudah aktif !</div>');
+            $this->session->set_flashdata('alert_timeout', 4000);
+			redirect('santri');
+		} else {
+			
+			$santri_id = $this->input->post('santri_id');
+			$username = $this->input->post('username');
+			$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+
+			$data_users = array(
+				'user_id' => $santri_id,
+				'username' => $username,
+				'password' => $password,
+				'role' => 'wali'
+			);
+			$this->AuthModel->register($data_users);
+
+			$santri_id = $this->input->post('santri_id');
+			if ($santri_id) {
+				$data_santri = array(
+					'status' => 'aktif'
+				);
+				$this->SantriModel->update_status($santri_id, $data_santri);
+			}
+
+			$data_profile = array(
+				'users_profile_id' => md5(date('YmdHis') . rand(1000, 9999)),
+				'user_id' => $santri_id,
+				'santri_id' => $santri_id,
+			);
+
+			$this->AuthModel->insert_user_profile($data_profile);
+			$this->session->set_flashdata('alert', '<div class="alert  alert-info">Data users berhasil di aktifkan !</div>');
+            $this->session->set_flashdata('alert_timeout', 4000);
+			redirect('santri');
+		}
 	}
 
 
