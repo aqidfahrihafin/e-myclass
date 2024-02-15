@@ -17,8 +17,8 @@
 					<div class="float-right">
 						<div class="input-group input-group-sm">
 						<?php $isCetakButtonDisplayed = false; 
-							foreach ($guru as $result) { if ($result->tahun_ajaran_id && !$isCetakButtonDisplayed) {	?>
-									<a class="btn btn-danger btn-sm waves-effect btn-label waves-light" target="_blank" href="<?php echo site_url('admin/pembimbing/cetak/' . $result->tahun_ajaran_id); ?>">
+							foreach ($data_ajar as $result) { if ($result->kelas_id && !$isCetakButtonDisplayed) {	?>
+									<a class="btn btn-danger btn-sm waves-effect btn-label waves-light" target="_blank" href="<?php echo site_url('admin/datamengajar/cetak/' . $result->kelas_id); ?>">
 										<i class="bx bx-printer label-icon"></i> Cetak
 									</a>
 							<?php 	$isCetakButtonDisplayed = true; }}?>
@@ -29,14 +29,14 @@
 				</div>
 
 				<div>
-					<form id="tahunAjaranForm" action="<?php echo site_url('pembimbing'); ?>" method="post">		
+					<form id="KelasForm" action="<?php echo site_url('datamengajar'); ?>" method="post">		
 						<div class="form-group">
 							<!-- <label class="control-label">Sanah Dirasah</label> -->
-							<select class="form-control" name="tahun_ajaran_id" id="tahunAjaranSelect">
-								<option value="">Pilih Sanah Dirasah</option> <!-- Opsi tambahan -->
-								<?php usort($tahunajaran, function($a, $b) { return strcmp($b->tahun_ajaran_id, $a->tahun_ajaran_id);});
-									foreach ($tahunajaran as $tahun) {?>
-									<option value="<?php echo $tahun->tahun_ajaran_id; ?>"><?php echo $tahun->nama_tahun; ?></option>
+							<select class="form-control" name="data_ajar_id" id="kelasSelect">
+								<option value="">Pilih Data Pelajaran</option> <!-- Opsi tambahan -->
+								<?php usort($kelas, function($a, $b) { return strcmp($b->kelas_id, $a->kelas_id);});
+									foreach ($kelas as $result) {?>
+									<option value="<?php echo $result->kelas_id; ?>"><?php echo $result->kelas; ?> <?php echo $result->jenis_kelas; ?> - <?php echo $result->nama_tahun; ?></option>
 								<?php }?>
 							</select>
 						</div>
@@ -44,9 +44,9 @@
 				</div>
 
 				<script>
-					document.getElementById('tahunAjaranSelect').addEventListener('change', function() {
+					document.getElementById('kelasSelect').addEventListener('change', function() {
 						if (this.value !== "") {
-							document.getElementById('tahunAjaranForm').submit();
+							document.getElementById('KelasForm').submit();
 						}
 					});
 				</script>
@@ -58,31 +58,19 @@
                             <thead>
                                 <tr>
                                     <th width="10px">No</th>
-                                    <th>Kode Kelas</th>
+                                    <th>Mata Pelajaran</th>
                                     <th>Nama Kelas</th>
-                                    <th>Target Kelas/Semester</th>
-                                    <th>Sanah Dirasah</th>
-                                    <th>Pembimbing</th>
+                                    <th>Guru</th>
                                 </tr>
                             </thead>
 
-                            <tbody>
-								<?php $no = 1; foreach ($guru as $result) {?>							
+                            <tbody>								
+								<?php $no = 1; foreach ($data_ajar as $result) {?>							
 									<tr>
 										<td><?php echo $no++; ?></td>
-										<td><?php echo $result->kode_kelas; ?></td>
-										<td><?php echo $result->kelas; ?>-<?php echo $result->jenis_kelas; ?></td>
-										<td align="center">
-											<span class="badge badge-pill badge-info font-size-8">
-												<?php echo $result->target_kelas; ?>
-											</span>
-										</td>
-										<td align="center">
-											<span class="badge badge-pill badge-info font-size-8">
-												<?php echo $result->nama_tahun; ?>
-											</span>
-										</td>
-										<td><?php echo $result->nama_guru; ?></td>										
+										<td><?php echo $result->kode_mapel; ?> - <?php echo $result->nama_mapel; ?> </td>								
+										<td><?php echo $result->kelas; ?> <?php echo $result->jenis_kelas; ?></td>								
+										<td><?php echo $result->nama_guru; ?></td>								
 									</tr>
 								<?php }?>
                             </tbody>

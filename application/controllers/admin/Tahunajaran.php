@@ -51,12 +51,22 @@ class Tahunajaran extends CI_Controller {
         redirect('tahunajaran');
     }
 
-    public function delete() {
+	public function delete() {
+
 		$tahun_ajaran_id = $this->input->post('tahun_ajaran_id');
-        $this->TahunAjaranModel->delete_tahun_ajaran($tahun_ajaran_id);
+		$this->db->where('tahun_ajaran_id', $tahun_ajaran_id);
+		$santri_count = $this->db->count_all_results('santri');
+
+		if ($santri_count > 0) {
+			$this->db->where('tahun_ajaran_id', $tahun_ajaran_id);
+			$this->db->update('santri', ['tahun_ajaran_id' => null]);
+		}
+
+		$this->db->where('tahun_ajaran_id', $tahun_ajaran_id);
+		$this->db->delete('tahun_ajaran');
 		$this->session->set_flashdata('alert', '<div class="alert  alert-info">Data berhasil di hapus !</div>');
-        $this->session->set_flashdata('alert_timeout', 4000);
-        redirect('tahunajaran');
-    }
-	
+		$this->session->set_flashdata('alert_timeout', 4000);
+		redirect('tahunajaran');
+	}
+
 }

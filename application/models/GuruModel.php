@@ -18,7 +18,7 @@ class GuruModel extends CI_Model {
 		$this->db->join('kelas', 'guru.guru_id = kelas.guru_id', 'inner');
 		$this->db->join('tahun_ajaran', 'kelas.tahun_ajaran_id = tahun_ajaran.tahun_ajaran_id', 'left');
 		
-		// Tambahkan kondisi WHERE untuk memfilter berdasarkan tahun ajaran
+		//  kondisi WHERE untuk memfilter berdasarkan tahun ajaran
 		$this->db->where('kelas.tahun_ajaran_id', $tahun_ajaran_id);
 
 		$query = $this->db->get();

@@ -45,7 +45,7 @@ CREATE TABLE santri (
   pekerjaan_ibu VARCHAR(20),
   telp_ibu VARCHAR(20),
   photo VARCHAR(255),
-  status ENUM('aktif', 'keluar', 'lulus', 'tidak_lulus'),
+  status ENUM('aktif',  'lulus', 'non-aktif'),
 	tahun_ajaran_id VARCHAR(100)  NULL,
 	tanggal_masuk VARCHAR(100)  NULL,
 	tanggal_keluar VARCHAR(100)  NULL,
@@ -56,7 +56,7 @@ CREATE TABLE santri (
 
 INSERT INTO santri (santri_id, no_induk, nik, no_kk, nama_santri, tempat_lahir, tanggal_lahir, jenis_kelamin, alamat_santri, email, telp_santri, nama_ayah, alamat_ayah, pendidikan_ayah, pekerjaan_ayah, telp_ayah, nama_ibu, alamat_ibu, pendidikan_ibu, pekerjaan_ibu, telp_ibu, photo, status)
 VALUES 
-(MD5('1'), '1234567890', '1234567890123456', '1234567890123456', 'Ali', 'Jakarta', '2000-01-01', 'Laki-laki', 'Jl. Raya No. 123', 'ali@example.com', '081234567890', 'Abdul', 'Jl. Baru No. 456', 'SMA', 'PNS', '081234567891', 'Fatimah', 'Jl. Lama No. 789', 'SMA', 'Ibu Rumah Tangga', '081234567892', 'photo.jpg', 'aktif');
+(MD5('1'), '1234567890', '1234567890123456', '1234567890123456', 'Aqid', 'Jakarta', '2000-01-01', 'Laki-laki', 'Jl. Raya No. 123', 'ali@example.com', '081234567890', 'Abdul', 'Jl. Baru No. 456', 'SMA', 'PNS', '081234567891', 'Fatimah', 'Jl. Lama No. 789', 'SMA', 'Ibu Rumah Tangga', '081234567892', 'photo.jpg', 'non-aktif');
 
 -- tabel guru
 CREATE TABLE guru (
@@ -137,11 +137,13 @@ CREATE TABLE data_ajar (
   data_ajar_id varchar(36) NOT NULL,
   kelas_id varchar(36) NOT NULL,
   guru_id varchar(36) NOT NULL,
+  mapel_id varchar(36) NOT NULL,
   semester varchar(36) NOT NULL,
   create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (data_ajar_id),
-  FOREIGN KEY (kelas_id) REFERENCES kelas (kelas_id),
-  FOREIGN KEY (guru_id) REFERENCES guru (guru_id)
+  FOREIGN KEY (kelas_id) REFERENCES kelas (kelas_id) ON DELETE CASCADE,
+  FOREIGN KEY (mapel_id) REFERENCES mapel (mapel_id) ON DELETE CASCADE,
+  FOREIGN KEY (guru_id) REFERENCES guru (guru_id) ON DELETE CASCADE
 );
 
 -- data semester

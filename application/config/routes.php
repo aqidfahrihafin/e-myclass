@@ -20,6 +20,7 @@ $route['kelas'] = 'admin/kelas/index';
 $route['guru'] = 'admin/guru/index';
 $route['pembimbing'] = 'admin/pembimbing/index';
 $route['datamengajar'] = 'admin/datamengajar/index';
+$route['penilaian'] = 'admin/penilaian/index';
 
 //route santri
 $route['santri'] = 'admin/santri/index';
