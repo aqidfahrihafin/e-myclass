@@ -7,6 +7,7 @@ class Pesantren extends CI_Controller {
         parent::__construct();
 	
 		$this->load->model('UsersModel');
+		$this->load->model('GuruModel');
 		$this->load->model('PesantrenModel');
 
 			if (!$this->session->userdata('user_id')) {
@@ -23,6 +24,7 @@ class Pesantren extends CI_Controller {
 	public function index() {
 		$this->data['title'] = 'Pesantren';
 
+		$this->data['guru'] = $this->GuruModel->get_all_guru();
 		$this->data['pesantren'] = $this->PesantrenModel->get_pesantren();
         $this->data['content_view'] = 'admin/profilpesantren/index';
         $this->load->view('templates/content', $this->data);
@@ -39,8 +41,7 @@ class Pesantren extends CI_Controller {
                 'kecamatan' => $this->input->post('kecamatan'),
                 'kabupaten' => $this->input->post('kabupaten'),
                 'provinsi' => $this->input->post('provinsi'),
-                'pimpinan' => $this->input->post('pimpinan'),
-                'nip' => $this->input->post('nip')
+                'guru_id' => $this->input->post('guru_id'),
             );
 
             if (!empty($_FILES['logo']['name'])) {

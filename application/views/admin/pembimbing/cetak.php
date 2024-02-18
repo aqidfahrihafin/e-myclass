@@ -84,21 +84,22 @@
         </table>
     </div>
     <br>
-    <div class="ttd">
-        <p>Sumenep, <?php echo date('d F Y'); ?></p>
-        <!-- Ganti dengan gambar tanda tangan yang sesuai -->
-        <img src="<?php echo base_url('upload/qrcode/signature_dosen_23.png'); ?>" alt="Tanda Tangan" width="75px">
-        <p><b>Aqid Fahri Hafin, S. Kom</b></p>
-    </div>
-    <!-- Footer -->
+	
+	<?php foreach ($pesantren as $result): ?>
+		<div class="ttd">
+			<p><?php echo $result->kabupaten; ?>, <?php echo date('d F Y'); ?></p>
+			<img src="<?php echo base_url('upload/qrcode/'.$result->qrcode); ?>" alt="Tanda Tangan" width="75px">
+			<p><b><?php echo $result->nama_guru; ?></b></p>
+		</div>
+	<?php endforeach; ?>
+
+
     <div id="footer">
         <img src="<?php echo base_url('upload/kop/footer.jpg'); ?>" width="100%">
     </div>
     <script>
-        // Jalankan fungsi cetak secara otomatis saat halaman dimuat
         window.onload = function () {
             window.print();
-            // Setelah mencetak, kembali ke halaman sebelumnya
             window.onafterprint = function () {
                 window.history.back();
             };

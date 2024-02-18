@@ -9,15 +9,15 @@ CREATE TABLE pesantren (
     kecamatan VARCHAR(50),
     kabupaten VARCHAR(50),
     provinsi VARCHAR(50),
-    pimpinan VARCHAR(100),
-    nip VARCHAR(20),
     logo VARCHAR(255),
-    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    guru_id VARCHAR(36),
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (guru_id) REFERENCES guru(guru_id) ON DELETE SET NULL
 );
 
 INSERT INTO pesantren (pesantren_id, nama_lembaga, nsm, npsm, alamat, kecamatan, kabupaten, provinsi, pimpinan, nip, logo)
 VALUES 
-(MD5('1'), 'Pesantren Apins Digital', '1234567890', '0987654321', 'Jl. Raya Pesantren No. 123', 'Kota', 'Kabupaten A', 'Provinsi X', 'Aqid Fahri Hafin', '1234567890', 'logo.png');
+(MD5('1'), 'Pesantren Apins Digital', '1234567890', '0987654321', 'Jl. Raya Pesantren No. 123', 'Kota', 'Kabupaten A', 'Provinsi X', 'logo.png');
 
 
 
@@ -138,7 +138,6 @@ CREATE TABLE data_ajar (
   kelas_id varchar(36) NOT NULL,
   guru_id varchar(36) NOT NULL,
   mapel_id varchar(36) NOT NULL,
-  semester varchar(36) NOT NULL,
   create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (data_ajar_id),
   FOREIGN KEY (kelas_id) REFERENCES kelas (kelas_id) ON DELETE CASCADE,
@@ -170,8 +169,8 @@ CREATE TABLE users (
 -- tabel users profile
 CREATE TABLE users_profile (
   users_profile_id varchar(36) NOT NULL,
-  user_id varchar(36)  NULL,
-  guru_id varchar(36)  NULL,
+  user_id varchar(36) NULL,
+  guru_id varchar(36) NULL,
   santri_id varchar(36) NULL,
   create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (users_profile_id),

@@ -20,7 +20,7 @@
 		<a href="<?php echo base_url('#');?>" class="dropdown-item">Absen Santri</a>
 		<a href="<?php echo base_url('#');?>" class="dropdown-item">Catatan Pembimbing</a>
 		<a href="<?php echo base_url('#');?>" class="dropdown-item">Penilaian Kepribadian</a>
-		<a href="<?php echo base_url('#');?>" class="dropdown-item">Prestasi Santri</a>
+		<a href="<?php echo base_url('prestasi');?>" class="dropdown-item">Prestasi Santri</a>
 		<a href="<?php echo base_url('#');?>" class="dropdown-item">Raport Santri</a>
 	</div>
 </li>

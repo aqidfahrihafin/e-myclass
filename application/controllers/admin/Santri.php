@@ -30,6 +30,8 @@ class Santri extends CI_Controller {
 
 	public function formulir($santri_id) {
 		$data['title'] = 'Formulir Santri';
+		$this->load->model('PesantrenModel');
+		$data['pesantren'] = $this->PesantrenModel->get_pesantren();
         $data['santri'] = $this->SantriModel->get_santri_by_id($santri_id);
 		$data['prestasi'] = $this->SantriModel->get_prestasi_by_santri_id($santri_id);
 		$data['beasiswa'] = $this->SantriModel->get_beasiswa_by_santri_id($santri_id);
@@ -54,6 +56,8 @@ class Santri extends CI_Controller {
 
 	public function cetak_alumni() {
 		$this->data['title'] = 'Cetak Data Santri';
+		$this->load->model('PesantrenModel');
+		$data['pesantren'] = $this->PesantrenModel->get_pesantren();
 		$this->data['santri'] = $this->SantriModel->get_all_data_santri();
 		$this->data['tahunajaran'] = $this->TahunAjaranModel->get_all_tahun_ajaran();
         $this->load->view('admin/santri/cetak-data-alumni', $this->data);

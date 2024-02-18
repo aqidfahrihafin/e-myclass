@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
     <meta content="E-Raport" name="Aqid Fahri Hafin">
-    <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result['logo']); ?>">
+    <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result->logo); ?>">
     <link href="<?php echo base_url('public/assets/');?>css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('public/assets/');?>css/icons.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('public/assets/');?>css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
                                 <div class="col-7">
                                     <div class="text-primary p-4">
                                         <h5 class="text-primary">Welcome !</h5>
-                                        <p>Sign in to continue to E-Raport <?php echo $result['nama_lembaga']; ?>.</p>
+                                        <p>Sign in to continue to E-Raport <?php echo $result->nama_lembaga; ?>.</p>
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
@@ -38,7 +38,7 @@
                                 <a href="<?php echo base_url('/');?>">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="<?php echo base_url('upload/logo/'.$result['logo']); ?>" alt="" class="rounded-circle"
+                                            <img src="<?php echo base_url('upload/logo/'.$result->logo); ?>" alt="" class="rounded-circle"
                                                 height="34">
                                         </span>
                                     </div>

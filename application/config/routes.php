@@ -15,11 +15,18 @@ $route['pesantren'] = 'admin/pesantren/index';
 $route['tahunajaran'] = 'admin/tahunajaran/index';
 $route['mapel'] = 'admin/mapel/index';
 $route['kelas'] = 'admin/kelas/index';
+$route['nilai'] = 'admin/nilai/index';
+$route['nilaikepribadian'] = 'admin/nilaikepribadian/index';
+$route['prestasi'] = 'admin/prestasi/index';
+$route['beasiswa'] = 'admin/beasiswa/index';
+$route['absensi'] = 'admin/absensi/index';
+$route['catatanpembimbing'] = 'admin/catatanpembimbing/index';
 
 //route guru
 $route['guru'] = 'admin/guru/index';
 $route['pembimbing'] = 'admin/pembimbing/index';
 $route['datamengajar'] = 'admin/datamengajar/index';
+$route['dataajar'] = 'admin/datamengajar/index';
 $route['penilaian'] = 'admin/penilaian/index';
 
 //route santri

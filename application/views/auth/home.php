@@ -9,7 +9,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
     <meta content="Themesbrand" name="author">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result['logo']); ?>">
+    <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result->logo); ?>">
     <!-- owl.carousel css -->
     <link rel="stylesheet" href="<?php echo base_url('public/assets/');?>libs/owl.carousel/assets/owl.carousel.min.css">
 
@@ -29,8 +29,8 @@
     <nav class="navbar navbar-expand-lg navigation fixed-top sticky">
         <div class="container">
             <a class="navbar-logo" href="<?php echo base_url('/');?>">
-                <img src="<?php echo base_url('upload/logo/'.$result['logo']); ?>" alt="" height="35" class="logo logo-dark">
-                <img src="<?php echo base_url('upload/logo/'.$result['logo']); ?>" alt="" height="35" class="logo logo-light">
+                <img src="<?php echo base_url('upload/logo/'.$result->logo); ?>" alt="" height="35" class="logo logo-dark">
+                <img src="<?php echo base_url('upload/logo/'.$result->logo); ?>" alt="" height="35" class="logo logo-light">
             </a>
 
             <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
@@ -64,7 +64,7 @@
                 <div class="col-lg-5">
                     <div class="text-white-50">
                         <h1 class="text-white font-weight-semibold mb-3 hero-title">E-Raport Digital Pondok Pesantren
-                            <?php echo $result['nama_lembaga']; ?></h1>
+                            <?php echo $result->nama_lembaga; ?></h1>
                         <p class="font-size-14">Aplikasi Raport Digital diharapkan dapat mendukung program Pesantren
                             Digital, agar dapat memberikan layanan yang cepat, tepat dan akurat kepada seluruh
                             warga pesantren.
@@ -186,7 +186,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="mb-4">
-                        <img src="<?php echo base_url('upload/logo/'.$result['logo']); ?>" alt="" height="35">
+                        <img src="<?php echo base_url('upload/logo/'.$result->logo); ?>" alt="" height="35">
                     </div>
 
                     <p class="mb-2">2023 © E-Raport. Design & Develop by Aqid Fahri Hafin</p>

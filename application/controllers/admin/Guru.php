@@ -167,6 +167,8 @@ class Guru extends CI_Controller {
 	public function cetak() {
 		$data['title'] = 'Cetak Data Guru';
 
+		$this->load->model('PesantrenModel');
+		$data['pesantren'] = $this->PesantrenModel->get_pesantren();
 		$data['guru'] = $this->GuruModel->get_all_guru();
 		$this->load->view('admin/guru/cetak', $data);
 	}

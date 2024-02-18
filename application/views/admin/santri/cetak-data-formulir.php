@@ -251,12 +251,14 @@
 	</div>
 
     <br>
-    <div class="ttd">
-        <p>Sumenep, <?php echo date('d F Y'); ?></p>
-        <img src="<?php echo base_url('upload/qrcode/signature_dosen_23.png'); ?>" alt="Tanda Tangan" width="75px">
-        <p><b>Aqid Fahri Hafin, S. Kom</b></p>
-    </div>
-
+  	<?php foreach ($pesantren as $result): ?>
+		<div class="ttd">
+			<p><?php echo $result->kabupaten; ?>, <?php echo date('d F Y'); ?></p>
+			<img src="<?php echo base_url('upload/qrcode/'.$result->qrcode); ?>" alt="Tanda Tangan" width="75px">
+			<p><b><?php echo $result->nama_guru; ?></b></p>
+		</div>
+	<?php endforeach; ?>
+	
     <script>
         window.onload = function () {
             window.print();

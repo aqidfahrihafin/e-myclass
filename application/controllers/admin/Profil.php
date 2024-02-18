@@ -20,6 +20,8 @@ class Profil extends CI_Controller {
 	public function index() {
 		$this->data['title'] = 'Data Profil';
 
+		$user_id = $this->session->userdata('user_id');
+  		$this->data['user_data'] = $this->UsersModel->get_user_data_by_user_id($user_id);
 		$this->data['users_profiles'] = $this->UsersModel->get_all_users();
         $this->data['content_view'] = 'admin/users/profil';
         $this->load->view('templates/content', $this->data);

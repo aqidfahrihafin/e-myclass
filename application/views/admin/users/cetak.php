@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cetak Data Pembimbing</title>
+    <title>Cetak Data Pengguna</title>
     <style>
         /* Tambahkan gaya cetak di sini */
         @media print {
@@ -65,12 +65,12 @@
 			</thead>
 			<tbody>
 			<?php $no = 1; foreach ($users_profiles as $result): ?>
-				<?php if ($result->role !== 'admin'): ?>
+				<?php if ($result->role !== 'admin' && $result->role !== 'wali'): ?>
 					<tr>
 						<td><?php echo $no++; ?></td>
 						<td><?php echo $result->nama_guru; ?></td>
 						<td><?php echo $result->username; ?></td>
-						<td><?php echo str_replace('-', '', $result->tanggal_lahir); ?></td>
+						<td><?php echo str_replace('-', '', $result->password); ?></td>
 						<td><?php echo $result->role; ?></td>
 						<td><?php echo $result->create_at; ?></td>
 					</tr>
@@ -80,13 +80,15 @@
 		</table>
      </div>
     <br>
-    <div class="ttd">
-        <p>Sumenep, <?php echo date('d F Y'); ?></p>
-        <!-- Ganti dengan gambar tanda tangan yang sesuai -->
-        <img src="<?php echo base_url('upload/qrcode/signature_dosen_23.png'); ?>" alt="Tanda Tangan" width="75px">
-        <p><b>Aqid Fahri Hafin, S. Kom</b></p>
-    </div>
-    <!-- Footer -->
+    
+	<?php foreach ($pesantren as $result): ?>
+		<div class="ttd">
+			<p><?php echo $result->kabupaten; ?>, <?php echo date('d F Y'); ?></p>
+			<img src="<?php echo base_url('upload/qrcode/'.$result->qrcode); ?>" alt="Tanda Tangan" width="75px">
+			<p><b><?php echo $result->nama_guru; ?></b></p>
+		</div>
+	<?php endforeach; ?>
+
     <div id="footer">
         <img src="<?php echo base_url('upload/kop/footer.jpg'); ?>" width="100%">
     </div>

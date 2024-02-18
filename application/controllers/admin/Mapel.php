@@ -51,6 +51,8 @@ class Mapel extends CI_Controller {
 	public function cetak() {
 		$data['title'] = 'Data Matapelajaran';
 
+		$this->load->model('PesantrenModel');
+		$data['pesantren'] = $this->PesantrenModel->get_pesantren();
 		$data['mapel'] = $this->MapelModel->get_all_mapel();
 		$this->load->view('admin/mapel/cetak', $data);
 	}

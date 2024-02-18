@@ -28,9 +28,10 @@ class Pembimbing extends CI_Controller {
 	public function cetak($tahun_ajaran_id) {
 		$data['title'] = 'Cetak Pembimbing';
 	
+		$this->load->model('PesantrenModel');
+		$data['pesantren'] = $this->PesantrenModel->get_pesantren();
 		$data['tahunajaran'] = $this->TahunAjaranModel->get_tahun_ajaran_by_id($tahun_ajaran_id);
 		$data['guru'] = $this->GuruModel->get_all_data_guru($tahun_ajaran_id);
-	
 		$this->load->view('admin/pembimbing/cetak', $data);
 	}
 	

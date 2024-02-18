@@ -31,6 +31,8 @@ class Users extends CI_Controller {
 	public function cetak() {
 		$data['title'] = 'Data Matapelajaran';
 
+		$this->load->model('PesantrenModel');
+		$data['pesantren'] = $this->PesantrenModel->get_pesantren();
 		$data['users_profiles'] = $this->UsersModel->get_all_users();
 		$this->load->view('admin/users/cetak', $data);
 	}

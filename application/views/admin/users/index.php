@@ -45,7 +45,7 @@
 								<td><?php echo $no++; ?></td>
 								<td><?php echo $result->nama_guru; ?></td>
 								<td><?php echo $result->username; ?></td>
-								<td><?php echo str_replace('-', '', $result->tanggal_lahir); ?></td>
+								<td><?php echo str_replace('-', '', $result->password); ?></td>
 								<td><?php echo $result->role; ?></td>
 								<td><?php echo $result->create_at; ?></td>
 								 <td align="center">

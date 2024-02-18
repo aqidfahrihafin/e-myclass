@@ -7,9 +7,13 @@ class PesantrenModel extends CI_Model {
     }
 
     public function get_pesantren() {
-        $query = $this->db->get('pesantren');
-        return $query->result_array();
-    }
+		// Menggunakan LEFT JOIN untuk menggabungkan tabel pesantren dan guru
+		$this->db->select('pesantren.*, guru.*');
+		$this->db->from('pesantren');
+		$this->db->join('guru', 'pesantren.guru_id = guru.guru_id', 'left');
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 	public function get_logo_filename($pesantren_id) {
         $this->db->select('logo');
