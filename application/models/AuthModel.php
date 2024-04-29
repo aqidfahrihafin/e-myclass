@@ -27,8 +27,8 @@ class AuthModel extends CI_Model {
         }
     }
 
-	public function get_user_by_guru_id($guru_id) {
-        return $this->db->get_where('users_profile', array('guru_id' => $guru_id))->row();
+	public function get_user_by_dosen_id($dosen_id) {
+        return $this->db->get_where('users_profile', array('dosen_id' => $dosen_id))->row();
     }
 	
 	public function delete_user($user_id) {

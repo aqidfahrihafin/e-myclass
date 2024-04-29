@@ -28,32 +28,32 @@
 
                     <div class="table-responsive">
 
-                        <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap"
-                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                  
                         <thead>
                                 <tr>
                                     <th width="10px">No</th>
                                     <th>Nama</th>
-                                    <th width="50px">NIS</th>
-                                    <th width="50px">L/P</th>
-                                    <th width="150px">Prestasi</th>
+                                    <th>NIM</th>
+                                    <th>L/P</th>
+                                    <th width="120px">Prestasi</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-								<?php $no = 1; foreach ($santri as $result)  { ?>
+								<?php $no = 1; foreach ($mahasiswa as $result)  { ?>
 										<tr>
 											<td><?php echo $no++; ?></td>
-											<td><?php echo $result->nama_santri; ?></td>
-											<td align="center"><?php echo $result->no_induk;?></td>
+											<td><?php echo $result->nama_mahasiswa; ?></td>
+											<td align="center"><?php echo $result->nim;?></td>
 											<td align="center"><?php echo $result->jenis_kelamin; ?></td>
 											<td align="center"> 
 												<div class="input-group input-group-sm">
 													<div class="input-group-prepend">
-														<span class="input-group-text mr-2 btn-info" style="padding: 2px 5px; border-radius: 3px;"><?php echo $result->jumlah_prestasi; ?></span>
+														<span class="input-group-text mr-2 btn-warning" style="padding: 2px 5px; border-radius: 3px;"><?php echo $result->jumlah_prestasi; ?></span>
 													</div>
-													<button type="button" class="btn btn-info btn-sm waves-effect"
-														data-toggle="modal" data-target=".prestasi">
+													<button type="button" class="btn btn-warning btn-sm waves-effect"
+														data-toggle="modal" data-target=".prestasi<?php echo $result->mahasiswa_id; ?>">
 														<i class="mdi mdi-eye"></i> View detail
 													</button>
 												</div>
@@ -70,3 +70,4 @@
  <!-- end row -->
 
 <?php $this->load->view('admin/prestasi/add');?>
+<?php $this->load->view('admin/prestasi/edit');?>

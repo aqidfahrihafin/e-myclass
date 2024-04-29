@@ -4,13 +4,16 @@
 <head>
 
     <meta charset="utf-8">
-    <title><?php echo $title ?></title>
+    <title><?php echo $title ?> | E-Reward</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Apins Digital Solusi Teknologi Tekini" name="description">
     <meta content="E-Raport" name="Aqid Fahri Hafin">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="<?php echo base_url('public/assets/');?>images/logo1.png">
-
+    <link rel="shortcut icon" href="<?php echo base_url('upload/logo');?>/logo1.png">
+  	<link href="<?php echo base_url('public/assets/');?>libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+	<link href="<?php echo base_url('public/assets/');?>libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
+	<link href="<?php echo base_url('public/assets/');?>libs/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css">
+	<link href="<?php echo base_url('public/assets/');?>libs/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo base_url('public/assets/');?>libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css">
     <!-- DataTables -->
     <link href="<?php echo base_url('public/assets/');?>libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
@@ -18,6 +21,7 @@
     <!-- Responsive datatable examples -->
     <link href="<?php echo base_url('public/assets/');?>libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <!-- Bootstrap Css -->
+	
     <link href="<?php echo base_url('public/assets/');?>css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
     <!-- Icons Css -->
     <link href="<?php echo base_url('public/assets/');?>css/icons.min.css" rel="stylesheet" type="text/css">

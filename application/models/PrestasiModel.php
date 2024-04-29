@@ -11,11 +11,15 @@ class PrestasiModel extends CI_Model {
         $this->db->insert('prestasi', $data);
     }
 
+	public function get_prestasi() {
+		return $this->db->get('prestasi')->result();
+    }
+
 	public function get_all_prestasi() {
-		$this->db->select('santri.*, COUNT(prestasi.prestasi_id) AS jumlah_prestasi');
-		$this->db->from('santri');
-		$this->db->join('prestasi', 'santri.santri_id = prestasi.santri_id', 'left');
-		$this->db->group_by('santri.santri_id'); // Group hasil berdasarkan ID santri untuk menghitung jumlah prestasi per santri
+		$this->db->select('mahasiswa.*, COUNT(prestasi.prestasi_id) AS jumlah_prestasi');
+		$this->db->from('mahasiswa');
+		$this->db->join('prestasi', 'mahasiswa.mahasiswa_id = prestasi.mahasiswa_id', 'left');
+		$this->db->group_by('mahasiswa.mahasiswa_id'); // Group hasil berdasarkan ID mahasiswa untuk menghitung jumlah prestasi per mahasiswa
 		$query = $this->db->get();
 
 		return $query->result();

@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
-<?php foreach ($pesantren as $result): ?>
+<?php foreach ($lembaga as $result): ?>
 <head>
 
     <meta charset="utf-8">
     <title><?php echo $title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
+    <meta content="E-Reward LPPM Universitas Annuqayah by Aqid Fahri Hafin,S.Kom" name="description">
     <meta content="Themesbrand" name="author">
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result->logo); ?>">
@@ -49,7 +49,7 @@
 
                 </ul>
 
-                <div class="ml-lg-2">
+                <div class="ml-lg-2 mb-3">
                     <a href="<?php echo base_url('login');?>" class="btn btn-outline-success w-xs">Sign in</a>
                 </div>
             </div>
@@ -63,15 +63,14 @@
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="text-white-50">
-                        <h1 class="text-white font-weight-semibold mb-3 hero-title">E-Raport Digital Pondok Pesantren
+                        <h1 class="text-white font-weight-semibold mb-3 hero-title">E-Reward
                             <?php echo $result->nama_lembaga; ?></h1>
-                        <p class="font-size-14">Aplikasi Raport Digital diharapkan dapat mendukung program Pesantren
-                            Digital, agar dapat memberikan layanan yang cepat, tepat dan akurat kepada seluruh
-                            warga pesantren.
+                        <p class="font-size-14">Aplikasi Reward Digital diharapkan dapat mendukung program Instansi, agar dapat memberikan layanan yang cepat, tepat dan akurat kepada seluruh
+                            mahasiswa dan dosen.
                             Amin.....!!!</p>
 
                         <div class="button-items mt-4">
-                            <a href="#" class="btn btn-success">Register Now</a>
+                            <a href="<?php echo base_url('register');?>" class="btn btn-success">Register Now</a>
                             <a href="<?php echo base_url('login');?>" class="btn btn-light">Login</a>
                         </div>
                     </div>
@@ -189,9 +188,8 @@
                         <img src="<?php echo base_url('upload/logo/'.$result->logo); ?>" alt="" height="35">
                     </div>
 
-                    <p class="mb-2">2023 © E-Raport. Design & Develop by Aqid Fahri Hafin</p>
-                    <p>It will be as simple as occidental in fact, it will be to an english person, it will seem like
-                        simplified English, as a skeptical</p>
+                    <p class="mb-2">2023 © E-Reward. Design & Develop by Aqid Fahri Hafin</p>
+                    <p>E-Reward Digital Pondok lembaga <?php echo $result->nama_lembaga; ?></p>
                 </div>
 
             </div>

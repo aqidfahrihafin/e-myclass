@@ -7,14 +7,14 @@
 						<?php if ($this->session->userdata('role') == "admin") {   ?>
 							<?php $this->load->view('templates/usersmenu/admin'); ?>
 						<?php } ?>	
-						<?php if ($this->session->userdata('role') == "pembimbing") {   ?>
-							<?php $this->load->view('templates/usersmenu/pembimbing'); ?>
+						<?php if ($this->session->userdata('role') == "bmsi") {   ?>
+							<?php $this->load->view('templates/usersmenu/bmsi'); ?>
 						<?php } ?>	
-						<?php if ($this->session->userdata('role') == "guru") {   ?>
-							<?php $this->load->view('templates/usersmenu/guru'); ?>
+						<?php if ($this->session->userdata('role') == "dosen") {   ?>
+							<?php $this->load->view('templates/usersmenu/dosen'); ?>
 						<?php } ?>	
-						<?php if ($this->session->userdata('role') == "wali") {   ?>
-							<?php $this->load->view('templates/usersmenu/wali'); ?>
+						<?php if ($this->session->userdata('role') == "mahasiswa") {   ?>
+							<?php $this->load->view('templates/usersmenu/mahasiswa'); ?>
 						<?php } ?>	               
                   </ul>			  
               </div>

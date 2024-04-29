@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
-<?php foreach ($pesantren as $result): ?>
+<?php foreach ($lembaga as $result): ?>
 <head>
     <meta charset="utf-8">
     <title><?php echo $title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
-    <meta content="E-Raport" name="Aqid Fahri Hafin">
+    <meta content="E-Reward LPPM Universitas Annuqayah by Aqid Fahri Hafin,S.Kom" name="description">
+    <meta content="E-Reward" name="Aqid Fahri Hafin">
     <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result->logo); ?>">
     <link href="<?php echo base_url('public/assets/');?>css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('public/assets/');?>css/icons.min.css" rel="stylesheet" type="text/css">
@@ -22,14 +22,11 @@
                     <div class="card overflow-hidden">
                         <div class="bg-soft-primary">
                             <div class="row">
-                                <div class="col-7">
+                                <div class="col-12">
                                     <div class="text-primary p-4">
                                         <h5 class="text-primary">Welcome !</h5>
-                                        <p>Sign in to continue to E-Raport <?php echo $result->nama_lembaga; ?>.</p>
+                                        <p>Sign in to continue to E-Reward <?php echo $result->nama_lembaga; ?>.</p>
                                     </div>
-                                </div>
-                                <div class="col-5 align-self-end">
-                                    <img src="<?php echo base_url('public/assets/');?>images/profile-img.png" alt="" class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -39,8 +36,9 @@
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
                                             <img src="<?php echo base_url('upload/logo/'.$result->logo); ?>" alt="" class="rounded-circle"
-                                                height="34">
+                                                height="40">
                                         </span>
+										
                                     </div>
                                 </a>
                             </div>
@@ -71,7 +69,7 @@
                                     </div>
                                     <div class="mt-4 text-center">
                                         <a href="<?php echo base_url('lupapw');?>" class="text-muted"><i class="mdi mdi-lock mr-1"></i> Forgot your password?</a>
-                                        <p class="mt-3 mb-0 text-center">Don't have an account ? <a  href="#" class="font-weight-medium text-primary">Signup now </a> </p>
+                                        <p class="mt-3 mb-0 text-center">Don't have an account ? <a  href="<?php echo base_url('register');?>" class="font-weight-medium text-primary">Signup now </a> </p>
                                     </div>
                                 </form>
                             </div>

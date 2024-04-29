@@ -1,60 +1,68 @@
-<?php foreach ($kelas as $result) {?>
+<?php foreach ($mahasiswa as $mahasiswaItem) {?>
 	<!-- add modal -->
-    <div class="modal fade kelas<?php echo $result->kelas_id; ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    <div class="modal fade prestasi<?php echo $mahasiswaItem->mahasiswa_id; ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered  modal-lg">
+        <div class="modal-dialog modal-dialog-centered  modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0">Edit Data Kelas</h5>
+                    <h6 class="modal-title mt-0">Data prestasi <b><?php echo $mahasiswaItem->nama_mahasiswa; ?></b></h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-					<form action="<?php echo site_url('admin/kelas/update'); ?>" method="post">
-						<div class="form-group">
-							<label for="kode">Kode Kelas</label>
-							<input type="hidden" class="form-control" value="<?php echo $result->kelas_id; ?>" name="kelas_id" id="kelas_id" >
-							<input type="text" class="form-control" value="<?php echo $result->kode_kelas; ?>" id="kode" readonly>
-						</div>
-						<div class="form-group">
-							<label for="kelas">Nama Kelas</label>
-							<input type="text" class="form-control" id="kelas" value="<?php echo $result->kelas; ?>" name="kelas">
-						</div>
-						<div class="form-group">
-							<label for="target_kelas">Target Kelas/Semester</label>
-							<input type="text" class="form-control" id="target_kelas" value="<?php echo $result->target_kelas; ?>" name="target_kelas">
-						</div>
-						<div class="form-group">
-							<label class="control-label">Nama Kelas</label>
-							<select class="form-control" name="jenis_kelas">
-								<option value="Putra" <?php if ($result->jenis_kelas == "Putra") echo "selected"; ?>>Putra</option>
-								<option value="Putri" <?php if ($result->jenis_kelas == "Putri") echo "selected"; ?>>Putri</option>
-							</select>
-						</div>
+					<div class="table-responsive">
+                       <table class="table mb-0">
+        				 <thead class="thead-light">
+                                <tr>
+                                    <th width="10px">No</th>
+                                    <th>Janis Prestasi</th>
+                                    <th>Nama Prestasi</th>
+                                    <th>Tingkat</th>
+                                    <th>Tahun</th>
+                                    <th>Penyelenggara</th>
+                                    <th>Tingkat</th>
+                                    <th width="10px">Action</th>
+                                </tr>
+                            </thead>
 
-						<div class="form-group">
-							<label class="control-label">Sanah Dirasah</label>
-							<select class="form-control" name="tahun_ajaran_id">
-								<?php foreach ($tahunajaran as $tahun) {?>
-									<option value="<?php echo $tahun->tahun_ajaran_id; ?>" <?php if ($tahun->tahun_ajaran_id == $result->tahun_ajaran_id) echo "selected"; ?>><?php echo $tahun->nama_tahun; ?></option>
-								<?php }?>
-							</select>
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">Guru Pembimbing</label>
-							<select class="form-control" name="guru_id">
-								<?php foreach ($guru as $result) {?>
-									<option value="<?php echo $result['guru_id']; ?>"><?php echo $result['nama_guru']; ?></option>
-								<?php }?>
-							</select>
-						</div>
+                            <tbody>
+								<?php $no = 1; $foundPrestasi = false; foreach ($prestasi as $result)  { ?>
+										<?php if ($result->mahasiswa_id == $mahasiswaItem->mahasiswa_id): ?>
+											<?php $foundPrestasi = true; ?>
+											<tr>
+												<td><?php echo $no++; ?></td>
+												<td><?php echo $result->jenis_prestasi; ?></td>
+												<td align="center"><?php echo $result->nama_prestasi; ?></td>
+												<td align="center"><?php echo $result->tingkat_prestasi;?></td>
+												<td align="center"><?php echo $result->tahun_prestasi;?></td>
+												<td align="center"><?php echo $result->penyelenggara;?></td>
+												<td align="center"><?php echo $result->peringkat;?></td>
+												<td align="center"> 
+													<div class="input-group input-group-sm">
+														<button type="button" class="btn btn-danger waves-effect waves-light btn-sm" onclick="hapusprestasi('<?php echo $result->prestasi_id; ?>')">
+															<i class="mdi mdi-trash-can"></i>
+														</button>
+													</div>
+												</td>
+											</tr>
+										<?php endif; ?>
+								<?php  }  
+									if (!$foundPrestasi) {
+										echo "<tr align='center'><td colspan='8'>" . $mahasiswaItem->nama_mahasiswa . " belum memiliki data prestasi</td></tr>";
+									}?>
+                            </tbody>
+                        </table>
+						<script>
+							function hapusprestasi(prestasiId) {
+								if (confirm('Anda yakin ingin menghapus prestasi ini?')) {
+									window.location.href = '<?php echo base_url('admin/prestasi/delete/'); ?>' + prestasiId;
+								}
+							}
+						</script>
 						<hr>
-						<div align="right">
-							<button type="submit" class="btn btn-primary w-md">Submit</button>
-						</div>
-					</form>
+						<footer class="text-muted text-center">E-Reward LPPM by Apins Digital</footer>
+                    </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

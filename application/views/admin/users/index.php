@@ -30,7 +30,7 @@
                         <thead>
                             <tr>
                                 <th width="10px">No</th>
-								<th>Nama Guru</th>
+								<th>Nama dosen</th>
 								<th>Username</th>
 								<th>Password</th>
 								<th>Role</th>
@@ -43,7 +43,7 @@
 						<?php $no = 1; foreach ($users_profiles as $result): ?>
 							<tr>
 								<td><?php echo $no++; ?></td>
-								<td><?php echo $result->nama_guru; ?></td>
+								<td><?php echo $result->nama_users; ?></td>
 								<td><?php echo $result->username; ?></td>
 								<td><?php echo str_replace('-', '', $result->password); ?></td>
 								<td><?php echo $result->role; ?></td>
@@ -58,9 +58,9 @@
                         </tbody>
                     </table>
 					<script>
-						function hapusguru(guruId) {
+						function hapusdosen(dosenId) {
 							if (confirm('Anda yakin ingin menghapus mapel ini?')) {
-								window.location.href = '<?php echo base_url('admin/mapel/delete/'); ?>' + guruId;
+								window.location.href = '<?php echo base_url('admin/mapel/delete/'); ?>' + dosenId;
 							}
 						}
 					</script>

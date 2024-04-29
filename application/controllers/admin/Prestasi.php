@@ -5,27 +5,33 @@ class Prestasi extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->model('UsersModel');
 		$this->load->model('PrestasiModel');
-		$this->load->model('SantriModel');
+		$this->load->model('MahasiswaModel');
 		$this->load->model('TahunAjaranModel');
+		
 		if (!$this->session->userdata('user_id')) {
 			$this->session->set_flashdata('alert', '<div class="alert  alert-danger">Maaf anda belum login !</div>');
             $this->session->set_flashdata('alert_timeout', 4000);
 			redirect('login');
 		}
+		$user_id = $this->session->userdata('user_id');
+        $user_data = $this->UsersModel->get_user_data_by_user_id($user_id);
+        $this->data['user_data'] = $user_data;
     }
 
 	public function index() {
-		$data['title'] = 'Data prestasi';
+		$this->data['title'] = 'Data Prestasi';
 
-		$data['santri'] = $this->PrestasiModel->get_all_prestasi();
-        $data['content_view'] = 'admin/prestasi/index';
-        $this->load->view('templates/content', $data);
+		$this->data['prestasi'] = $this->PrestasiModel->get_prestasi();
+		$this->data['mahasiswa'] = $this->PrestasiModel->get_all_prestasi();
+        $this->data['content_view'] = 'admin/prestasi/index';
+        $this->load->view('templates/content', $this->data);
 	}
 
 	public function simpan() { 
 
-        $this->form_validation->set_rules('santri_id', 'Santri', 'required');
+        $this->form_validation->set_rules('mahasiswa_id', 'mahasiswa', 'required');
         $this->form_validation->set_rules('tingkat_prestasi', 'Tingkat', 'required');
         $this->form_validation->set_rules('jenis_prestasi', 'Jenis Prestasi', 'required');
         $this->form_validation->set_rules('nama_prestasi', 'Nama Prestasi', 'required');
@@ -40,7 +46,7 @@ class Prestasi extends CI_Controller {
         } else {
             $data = array(
 				'prestasi_id' => md5(date('YmdHis') . rand(1000, 9999)),
-                'santri_id' => $this->input->post('santri_id'),
+                'mahasiswa_id' => $this->input->post('mahasiswa_id'),
                 'tingkat_prestasi' => $this->input->post('tingkat_prestasi'),
                 'jenis_prestasi' => $this->input->post('jenis_prestasi'),
                 'nama_prestasi' => $this->input->post('nama_prestasi'),
@@ -62,7 +68,7 @@ class Prestasi extends CI_Controller {
             'prestasi' => $this->input->post('prestasi'),
             'jenis_prestasi' => $this->input->post('jenis_prestasi'),
             'target_prestasi' => $this->input->post('target_prestasi'),
-			'santri_id' => $this->input->post('santri_id'),
+			'mahasiswa_id' => $this->input->post('mahasiswa_id'),
             'tahun_ajaran_id' => $this->input->post('tahun_ajaran_id'),
         );
 

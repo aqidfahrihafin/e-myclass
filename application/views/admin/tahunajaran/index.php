@@ -40,9 +40,8 @@
 
                 <div class="alert alert-primary" role="alert" align="justify">
                     <i class="mdi mdi-bullseye-arrow"></i>
-                    <b>Perhatian !</b> Halaman ini digunakan untuk menentukan Sanah Dirasah dan semester default pada
-                    halaman aplikasi <b>E-Raport</b>. Silahkan aktifkan Sanah Dirasah dan semester sesuai dengan yang
-                    berjalan di madrasah anda.
+                    <b>Perhatian !</b> Halaman ini digunakan untuk mengaktifkan Tahun Pengajuan dan Semester pada
+                    halaman aplikasi <b>E-Reward</b>. Silahkan aktifkan Tahun Pengajuan dan semester sesuai dengan tahun akademik.
                     <?php if ($semester): ?>
                         <span class="badge badge-pill badge-info font-size-8"><?php echo $semester->nama_tahun; ?></span>
                         <span class="badge badge-pill badge-primary font-size-8"><?php echo $semester->semester; ?></span>
@@ -58,7 +57,7 @@
                         <form action="<?php echo site_url('admin/semester/simpan'); ?>" method="post">
                     <?php endif; ?>
                         <div class="form-group">
-                            <label class="control-label">Sanah Dirasah</label>
+                            <label class="control-label">Tahun Akademik</label>
                             <?php if ($semester): ?>
                                 <input type="hidden" class="form-control" value="<?php echo $semester->semester_id; ?>" name="semester_id" id="semester_id">
                             <?php endif; ?>
@@ -97,7 +96,7 @@
                             </button>
                         </div>
                     </div>
-                    <h4 class="card-title mb-4">Data Sanah Dirasah</h4>
+                    <h4 class="card-title mb-4">Data Tahun Akademik</h4>
                     <hr>
                 </div>
 
@@ -108,7 +107,7 @@
                             <tr>
                                 <th width="10px">No</th>
                                 <th>Kode Tahun</th>
-                                <th>Sanah Dirasah</th>
+                                <th>Tahun Akademik</th>
                                 <th>Status</th>
                                 <th width="100px">Action</th>
                             </tr>

@@ -17,7 +17,7 @@
 							<label class="control-label">Role Users</label>
 							<input type="hidden" class="form-control" value="<?php echo $result->user_id; ?>" name="user_id" id="user_id" >
                             <select class="form-control" name="role" required="">
-								<option value="guru" <?php echo ($result->role == 'guru') ? 'selected' : ''; ?>>Guru</option>
+								<option value="dosen" <?php echo ($result->role == 'dosen') ? 'selected' : ''; ?>>dosen</option>
 								<option value="pembimbing" <?php echo ($result->role == 'pembimbing') ? 'selected' : ''; ?>>Pembimbing</option>
 								<option value="admin" <?php echo ($result->role == 'admin') ? 'selected' : ''; ?>>Admin</option>
 							</select>

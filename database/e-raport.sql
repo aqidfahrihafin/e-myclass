@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2024 at 05:50 AM
+-- Generation Time: Feb 20, 2024 at 01:11 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -52,13 +52,6 @@ CREATE TABLE `data_ajar` (
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `data_ajar`
---
-
-INSERT INTO `data_ajar` (`data_ajar_id`, `kelas_id`, `guru_id`, `mapel_id`, `create_at`) VALUES
-('0c12fb96526beb6612f3e4085c1e34d2', '96339922c0d29dc6b28c0be13336d537', 'aa06822dfb9273d3b3bb1900a71a3851', '7c58222287b07c054b354782c8e5b34c', '2024-02-15 04:39:35');
-
 -- --------------------------------------------------------
 
 --
@@ -88,7 +81,7 @@ CREATE TABLE `guru` (
 
 INSERT INTO `guru` (`guru_id`, `niy`, `nik`, `nama_guru`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat_guru`, `telp_guru`, `pendidikan`, `photo`, `qrcode`, `status`, `create_at`) VALUES
 ('aa06822dfb9273d3b3bb1900a71a3851', '123', '123', 'H. Sirojul Arifin Shofa, S.E. M.A', 'sumenep', '2024-02-01', 'L', '3', '0878795013153', 'SMA Sedrajat', 'user.png', '', 'aktif', '2024-02-10 18:30:56'),
-('c9a5be7171c0f354b4d4c11e7a2695c6', '202.0.021.01', '3529101701000001', 'Aqid Fahri Hafin, S. Kom', 'Sumenep', '2000-01-19', 'L', 'Gadu Timur', '87879501315', 'Sarjana (S1)', 'user.png', '', 'aktif', '2024-02-09 06:34:29');
+('c9a5be7171c0f354b4d4c11e7a2695c6', '202.0.021.01', '3529101701000001', 'Aqid Fahri Hafin, S. Kom', 'Sumenep', '2000-01-19', 'L', 'Gadu Timur', '87879501315', 'Sarjana (S1)', '72c219aa4af1a93b5e228dd06c81435c.jpeg', 'qrcode_guru_c9a5be7171c0f354b4d4c11e7a2695c6.png', 'aktif', '2024-02-09 06:34:29');
 
 -- --------------------------------------------------------
 
@@ -112,8 +105,27 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`kelas_id`, `guru_id`, `tahun_ajaran_id`, `kode_kelas`, `kelas`, `jenis_kelas`, `target_kelas`, `create_at`) VALUES
-('0fa0e0dca74d40e01b8e40b2a5ff5d85', 'c9a5be7171c0f354b4d4c11e7a2695c6', '03a1a133311dce0605967112b1d8b3f6', 'KL-024920', 'Tahfidz', 'Putra', '5 Juz', '2024-02-08 16:07:08'),
-('96339922c0d29dc6b28c0be13336d537', 'aa06822dfb9273d3b3bb1900a71a3851', '9563b8b912724bb70e016fb9296c086e', 'KL-024183', 'I\'dad', 'Putri', '2 Juz', '2024-02-15 01:12:45');
+('ac425a64c6b8644a80f409f2946bd33f', 'aa06822dfb9273d3b3bb1900a71a3851', '03a1a133311dce0605967112b1d8b3f6', 'KL-024712', 'Tahfidz', 'Putra', '2 Juz', '2024-02-19 15:19:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelas_santri`
+--
+
+CREATE TABLE `kelas_santri` (
+  `kelas_santri_id` varchar(36) NOT NULL,
+  `kelas_id` varchar(255) DEFAULT NULL,
+  `santri_id` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kelas_santri`
+--
+
+INSERT INTO `kelas_santri` (`kelas_santri_id`, `kelas_id`, `santri_id`) VALUES
+('01e4b106cee5b4c2d879e9e8475a89e4', 'ac425a64c6b8644a80f409f2946bd33f', 'b19232a6f86eb617f16c21431543f2ec'),
+('0f22b2e0bbfc8d3912f8779e1497aa41', 'ac425a64c6b8644a80f409f2946bd33f', 'b19232a6f86eb617f16c21431543f2ec');
 
 -- --------------------------------------------------------
 
@@ -166,9 +178,8 @@ CREATE TABLE `pesantren` (
   `kecamatan` varchar(50) DEFAULT NULL,
   `kabupaten` varchar(50) DEFAULT NULL,
   `provinsi` varchar(50) DEFAULT NULL,
-  `pimpinan` varchar(100) DEFAULT NULL,
-  `nip` varchar(20) DEFAULT NULL,
   `logo` varchar(255) DEFAULT NULL,
+  `guru_id` varchar(36) DEFAULT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -176,8 +187,8 @@ CREATE TABLE `pesantren` (
 -- Dumping data for table `pesantren`
 --
 
-INSERT INTO `pesantren` (`pesantren_id`, `nama_lembaga`, `nsm`, `npsm`, `alamat`, `kecamatan`, `kabupaten`, `provinsi`, `pimpinan`, `nip`, `logo`, `create_at`) VALUES
-('c4ca4238a0b923820dcc509a6f75849b', 'Apins Digital', '1234567890', '0987654321', 'Jl. Raya Pesantren No. 123', 'Kota', 'Kabupaten A', 'Provinsi X', 'Aqid Fahri Hafin', '1234567890', '47cc8d6949c39fb7f4a5a307a42946d2.png', '2024-02-08 10:51:08');
+INSERT INTO `pesantren` (`pesantren_id`, `nama_lembaga`, `nsm`, `npsm`, `alamat`, `kecamatan`, `kabupaten`, `provinsi`, `logo`, `guru_id`, `create_at`) VALUES
+('c4ca4238a0b923820dcc509a6f75849b', 'Pesantren Apins Digital', '1234567890', '0987654321', 'Jl. Raya Pesantren No. 123', 'Kota', 'Pamekasan', 'Jawa Timur', 'logo.png', 'c9a5be7171c0f354b4d4c11e7a2695c6', '2024-02-17 14:12:33');
 
 -- --------------------------------------------------------
 
@@ -195,6 +206,16 @@ CREATE TABLE `prestasi` (
   `penyelenggara` varchar(100) DEFAULT NULL,
   `peringkat` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prestasi`
+--
+
+INSERT INTO `prestasi` (`prestasi_id`, `santri_id`, `jenis_prestasi`, `tingkat_prestasi`, `nama_prestasi`, `tahun_prestasi`, `penyelenggara`, `peringkat`) VALUES
+('2135caee9f3226975dc074389496afce', 'b19232a6f86eb617f16c21431543f2ec', 'Rangking Kelas', 'Nasional', 'Rangking Kelas', '2025', 'Tahfidz', '1 (satu)'),
+('7ce310d72cd2eb5d275839022c65b1a1', 'b19232a6f86eb617f16c21431543f2ec', 'Rangking Kelas', 'Internasional', 'Rangking Kelas', '2026', 'Tahfidz', '1 (satu)'),
+('c4b07d2e40e5d52975460a9affe15e4e', 'b19232a6f86eb617f16c21431543f2ec', 'Rangking Kelas', 'Internasional', 'Rangking Kelas', '2025', 'Tahfidz', '1 (satu)'),
+('cd58c9077d10a9f13c183a3816d7408d', 'b19232a6f86eb617f16c21431543f2ec', 'Rangking Kelas2', 'Kecamatan', 'Rangking Kelas', '2024', 'Tahfidz2', '2');
 
 -- --------------------------------------------------------
 
@@ -238,8 +259,8 @@ CREATE TABLE `santri` (
 --
 
 INSERT INTO `santri` (`santri_id`, `no_induk`, `nik`, `no_kk`, `nama_santri`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat_santri`, `email`, `telp_santri`, `nama_ayah`, `alamat_ayah`, `pendidikan_ayah`, `pekerjaan_ayah`, `telp_ayah`, `nama_ibu`, `alamat_ibu`, `pendidikan_ibu`, `pekerjaan_ibu`, `telp_ibu`, `photo`, `status`, `tahun_ajaran_id`, `tanggal_masuk`, `tanggal_keluar`, `alasan_keluar`, `create_at`) VALUES
-('b19232a6f86eb617f16c21431543f2ec', '3', '3', '3', '3', '3', '2024-03-02', 'L', '3', 'milyanatussaadah@gmail.com', '3', '3', '3', 'SMA Sedrajat', 'Petani', '3', '3', '3', 'SD Sedrajat', 'Petani', '3', 'user.png', 'non-aktif', NULL, '2024-02-28', NULL, NULL, '2024-02-14 23:55:51'),
-('fd61d6db4e8560c6c443c27e34cb5a84', '1025015350', '3529101701000003', '3529101701000871', 'Aqid Fahri Hafin, S.Kom', 'Sumenep', '2024-01-31', 'P', 'Gadu Timur Ganding Sumenep', 'aqidfahrihafin@gmail.com', '087879501315', 'Ahmad Dani', 'Gadu Timur Ganding Sumenep', 'Sarjana (S1)', 'Petani', '087187289876', 'Puan Maharani', 'Gadu Timur Ganding Sumenep', 'SMA Sedrajat', 'Petani', '087178276787', 'user.png', 'non-aktif', '03a1a133311dce0605967112b1d8b3f6', '2024-03-01', NULL, NULL, '2024-02-10 15:44:17');
+('b19232a6f86eb617f16c21431543f2ec', '0909828781', '0000000000000000', '0000000000000000', 'Saifa Putri Terbit Matahari', '3', '2024-03-02', 'P', '3', 'milyanatussaadah@gmail.com', '3', '3', '3', 'SMA Sedrajat', 'Petani', '3', '3', '3', 'SD Sedrajat', 'Petani', '3', 'user.png', 'aktif', '03a1a133311dce0605967112b1d8b3f6', '2024-02-28', NULL, NULL, '2024-02-14 23:55:51'),
+('fd61d6db4e8560c6c443c27e34cb5a84', '1025015350', '3529101701000003', '3529101701000871', 'Aqid Fahri Hafin, S.Kom', 'Sumenep', '2024-01-31', 'L', 'Gadu Timur Ganding Sumenep', 'aqidfahrihafin@gmail.com', '087879501315', 'Ahmad Dani', 'Gadu Timur Ganding Sumenep', 'Sarjana (S1)', 'Petani', '087187289876', 'Puan Maharani', 'Gadu Timur Ganding Sumenep', 'SMA Sedrajat', 'Petani', '087178276787', 'user.png', 'aktif', '03a1a133311dce0605967112b1d8b3f6', '2024-03-01', NULL, NULL, '2024-02-10 15:44:17');
 
 -- --------------------------------------------------------
 
@@ -280,8 +301,7 @@ CREATE TABLE `tahun_ajaran` (
 --
 
 INSERT INTO `tahun_ajaran` (`tahun_ajaran_id`, `kode_tahun`, `nama_tahun`, `create_at`, `status`) VALUES
-('03a1a133311dce0605967112b1d8b3f6', 'SN-024102', '2025 M/1445 H', '2024-02-08 11:31:51', 'aktif'),
-('9563b8b912724bb70e016fb9296c086e', 'SN-024951', '9090', '2024-02-15 01:49:05', 'aktif');
+('03a1a133311dce0605967112b1d8b3f6', 'SN-024102', '2025 M/1445 H', '2024-02-08 11:31:51', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -302,8 +322,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `create_at`, `role`) VALUES
-('aa06822dfb9273d3b3bb1900a71a3851', '123', '$2y$10$cxUF0ZS/Yey.s9OO5i92d.l5UdzX7yJVhReUN5v3/xPNBEBCUElZy', '2024-02-10 18:39:32', 'pembimbing'),
-('c9a5be7171c0f354b4d4c11e7a2695c6', '3529101701000001', '$2y$10$aCoDzQCJW7uHnaxiPwSP3eDH.Ppse.jdbBFX/RFMq6/EWoKC8fyBO', '2024-02-09 06:35:28', 'admin');
+('aa06822dfb9273d3b3bb1900a71a3851', '123', '$2y$10$zOSinFS1BLkFpDZ50OPxXeEusj107rDIPry3I/G.Sbs89MTp1luxC', '2024-02-17 16:45:09', 'pembimbing'),
+('b19232a6f86eb617f16c21431543f2ec', '0000000000000000', '$2y$10$eL3fexaxUUsLdThBFWJI8.has/MVybiA0R7hUN/vx1mPRdhZbwQbS', '2024-02-20 00:03:24', 'wali'),
+('c9a5be7171c0f354b4d4c11e7a2695c6', '3529101701000001', '$2y$10$M1KsO06.DnOqqLTv7UpRW.CD2rARGrfPOw.qU.FPyzPvdyEfohn.O', '2024-02-17 13:40:58', 'admin'),
+('fd61d6db4e8560c6c443c27e34cb5a84', '3529101701000003', '$2y$10$6Eqg6AdiVzc1mW6JA4hxZOJfonNY4qL0GcKx1a7/5iqVtpeDA5Pii', '2024-02-17 13:47:34', 'wali');
 
 -- --------------------------------------------------------
 
@@ -324,8 +346,10 @@ CREATE TABLE `users_profile` (
 --
 
 INSERT INTO `users_profile` (`users_profile_id`, `user_id`, `guru_id`, `santri_id`, `create_at`) VALUES
-('7910da7860dacd21695332e89fdcd33c', 'c9a5be7171c0f354b4d4c11e7a2695c6', 'c9a5be7171c0f354b4d4c11e7a2695c6', NULL, '2024-02-09 06:35:28'),
-('ce7e7e537c2197445435025f9351234f', 'aa06822dfb9273d3b3bb1900a71a3851', 'aa06822dfb9273d3b3bb1900a71a3851', NULL, '2024-02-10 18:39:32');
+('8d3f72626f8d0043c12ff53e8384ba4e', 'c9a5be7171c0f354b4d4c11e7a2695c6', 'c9a5be7171c0f354b4d4c11e7a2695c6', NULL, '2024-02-17 13:40:58'),
+('ef330949485d63ea29964830b14b902c', 'fd61d6db4e8560c6c443c27e34cb5a84', NULL, 'fd61d6db4e8560c6c443c27e34cb5a84', '2024-02-17 13:47:34'),
+('f9ceed115cee126d039fb44c3a22df99', 'b19232a6f86eb617f16c21431543f2ec', NULL, 'b19232a6f86eb617f16c21431543f2ec', '2024-02-20 00:03:24'),
+('fb40d9d91bd540a6047da4d7eaca21f0', 'aa06822dfb9273d3b3bb1900a71a3851', 'aa06822dfb9273d3b3bb1900a71a3851', NULL, '2024-02-17 16:45:09');
 
 --
 -- Indexes for dumped tables
@@ -362,6 +386,14 @@ ALTER TABLE `kelas`
   ADD KEY `tahun_ajaran_id` (`tahun_ajaran_id`);
 
 --
+-- Indexes for table `kelas_santri`
+--
+ALTER TABLE `kelas_santri`
+  ADD PRIMARY KEY (`kelas_santri_id`),
+  ADD KEY `kelas_id` (`kelas_id`),
+  ADD KEY `santri_id` (`santri_id`);
+
+--
 -- Indexes for table `kkm`
 --
 ALTER TABLE `kkm`
@@ -379,7 +411,8 @@ ALTER TABLE `mapel`
 -- Indexes for table `pesantren`
 --
 ALTER TABLE `pesantren`
-  ADD PRIMARY KEY (`pesantren_id`);
+  ADD PRIMARY KEY (`pesantren_id`),
+  ADD KEY `guru_id` (`guru_id`);
 
 --
 -- Indexes for table `prestasi`
@@ -450,11 +483,24 @@ ALTER TABLE `kelas`
   ADD CONSTRAINT `kelas_ibfk_2` FOREIGN KEY (`tahun_ajaran_id`) REFERENCES `tahun_ajaran` (`tahun_ajaran_id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `kelas_santri`
+--
+ALTER TABLE `kelas_santri`
+  ADD CONSTRAINT `kelas_santri_ibfk_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`kelas_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `kelas_santri_ibfk_2` FOREIGN KEY (`santri_id`) REFERENCES `santri` (`santri_id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `kkm`
 --
 ALTER TABLE `kkm`
   ADD CONSTRAINT `kkm_ibfk_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`kelas_id`),
   ADD CONSTRAINT `kkm_ibfk_2` FOREIGN KEY (`tahun_ajaran_id`) REFERENCES `tahun_ajaran` (`tahun_ajaran_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `pesantren`
+--
+ALTER TABLE `pesantren`
+  ADD CONSTRAINT `pesantren_ibfk_1` FOREIGN KEY (`guru_id`) REFERENCES `guru` (`guru_id`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `prestasi`
@@ -473,12 +519,6 @@ ALTER TABLE `santri`
 --
 ALTER TABLE `semester`
   ADD CONSTRAINT `semester_ibfk_1` FOREIGN KEY (`tahun_ajaran_id`) REFERENCES `tahun_ajaran` (`tahun_ajaran_id`) ON DELETE CASCADE;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `guru` (`guru_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `users_profile`

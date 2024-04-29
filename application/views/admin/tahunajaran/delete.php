@@ -5,15 +5,15 @@
         <div class="modal-dialog modal-dialog-centered  modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0">Delete Sanah Dirasah</h5>
+                    <h5 class="modal-title mt-0">Delete Tahun Akademik</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
 					<div class="alert alert-warning" role="alert" align="center">
-						<b>Yakin </b>ingin mengpaus data  <span class="badge badge-pill badge-info font-size-8"><?php echo $tahun->kode_tahun; ?></span> <span class="badge badge-pill badge-primary font-size-8"><?php echo $tahun->nama_tahun; ?></span> ? <br>
-						<b>Perhatian!</b> Penghapusan Sanah Dirasah akan secara otomatis menghapus data lain yang memiliki hubungan pada <b>E-Raport</b>.
+						<b>Yakin </b>ingin menghapus data  <span class="badge badge-pill badge-info font-size-8"><?php echo $tahun->kode_tahun; ?></span> <span class="badge badge-pill badge-primary font-size-8"><?php echo $tahun->nama_tahun; ?></span> ? <br>
+						<b>Perhatian!</b> Penghapusan Tahun Akademik akan secara otomatis menghapus data lain yang memiliki hubungan pada <b>E-Raport</b>.
 					</div>
 					<form action="<?php echo site_url('admin/tahunajaran/delete'); ?>" method="post">
 						<div class="form-group">

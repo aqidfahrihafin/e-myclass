@@ -41,15 +41,33 @@
 <script src="<?php echo base_url('public/assets/');?>libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
 
 <!-- Responsive examples -->
+
 <script src="<?php echo base_url('public/assets/');?>libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?php echo base_url('public/assets/');?>libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 <script src="<?php echo base_url('public/assets/');?>js/pages/datatables.init.js"></script>
-
 <script src="<?php echo base_url('public/assets/');?>js/app.js"></script>
-   
+
+<!-- <script src="<?php echo base_url('public/assets/');?>js/pages/form-advanced.init.js"></script> -->
+<script src="<?php echo base_url('public/assets/');?>libs/select2/js/select2.min.js"></script>
+<script src="<?php echo base_url('public/assets/');?>libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="<?php echo base_url('public/assets/');?>libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="<?php echo base_url('public/assets/');?>libs/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script src="<?php echo base_url('public/assets/');?>libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script src="<?php echo base_url('public/assets/');?>libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+<script src="<?php echo base_url('public/assets/');?>libs/@chenfengyuan/datepicker/datepicker.min.js"></script>
+
 <script src="<?php echo base_url('public/assets/');?>libs/dropzone/min/dropzone.min.js"></script>
 
 
+<script>
+    $(document).ready(function(){
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#selectSantri').select2();
+            $('#selectTingkat').select2();
+            $('#select2').select2();
+        });
+    });
+</script>
 </body>
 
 </html>

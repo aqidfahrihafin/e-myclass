@@ -3,21 +3,12 @@
          <div class="d-flex">
              <!-- LOGO -->
              <div class="navbar-brand-box">
-                 <a href="#" class="logo logo-dark">
+                 <a href="<?php echo base_url('dashboard');?>" class="logo logo-light">
                      <span class="logo-sm">
-                         <img src="<?php echo base_url('public/assets/');?>images/logo/dark.png" alt="" height="26">
+                         <img src="<?php echo base_url('upload/logo/');?>ua.png" alt="" height="40">
                      </span>
                      <span class="logo-lg">
-                         <img src="<?php echo base_url('public/assets/');?>images/logo/dark.png" alt="" height="23">
-                     </span>
-                 </a>
-
-                 <a href="#" class="logo logo-light">
-                     <span class="logo-sm">
-                         <img src="<?php echo base_url('public/assets/');?>images/logo/light.png" alt="" height="26">
-                     </span>
-                     <span class="logo-lg">
-                         <img src="<?php echo base_url('public/assets/');?>images/logo/light.png" alt="" height="23">
+                         <img src="<?php echo base_url('upload/logo/');?>ua.png" alt="" height="37">
                      </span>
                  </a>
              </div>
@@ -92,7 +83,7 @@
              <div class="dropdown d-inline-block">
                  <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <img class="rounded-circle header-profile-user" src="<?php echo base_url('public/assets/');?>images/logo1.png" alt="Header Avatar">
+                     <img class="rounded-circle header-profile-user" src="<?php echo base_url('upload/photo/'.$user_data->photo); ?>" alt="Header Avatar">
                  </button>
                  <div class="dropdown-menu dropdown-menu-right">
                      <!-- item-->
@@ -101,8 +92,6 @@
                      <a class="dropdown-item d-block" href="#"><span
                              class="badge badge-success float-right">11</span><i
                              class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
-                     <a class="dropdown-item" href="#"><i
-                             class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a>
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item text-danger" href="<?php echo base_url('home/logout');?>"><i
                              class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>

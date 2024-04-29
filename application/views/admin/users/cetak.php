@@ -47,7 +47,7 @@
     </style>
 </head>
 <body> 
-    <img src="<?php echo base_url('upload/kop/header.jpg'); ?>"  width="600px">
+	<img src="<?php echo base_url('upload/kop/uahitam.png'); ?>" width="200px">		
     
 	<h4 align="center">DATA USERS E-RAPORT </h4>
   
@@ -68,7 +68,7 @@
 				<?php if ($result->role !== 'admin' && $result->role !== 'wali'): ?>
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $result->nama_guru; ?></td>
+						<td><?php echo $result->nama_users; ?></td>
 						<td><?php echo $result->username; ?></td>
 						<td><?php echo str_replace('-', '', $result->password); ?></td>
 						<td><?php echo $result->role; ?></td>
@@ -81,17 +81,14 @@
      </div>
     <br>
     
-	<?php foreach ($pesantren as $result): ?>
+	<?php foreach ($lembaga as $result): ?>
 		<div class="ttd">
 			<p><?php echo $result->kabupaten; ?>, <?php echo date('d F Y'); ?></p>
 			<img src="<?php echo base_url('upload/qrcode/'.$result->qrcode); ?>" alt="Tanda Tangan" width="75px">
-			<p><b><?php echo $result->nama_guru; ?></b></p>
+			<p><b><?php echo $result->nama_dosen; ?></b></p>
 		</div>
 	<?php endforeach; ?>
 
-    <div id="footer">
-        <img src="<?php echo base_url('upload/kop/footer.jpg'); ?>" width="100%">
-    </div>
     <script>
         window.onload = function () {
             window.print();

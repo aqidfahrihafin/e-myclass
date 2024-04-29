@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-dialog-centered  modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0">Add Sanah Dirasah</h5>
+                    <h5 class="modal-title mt-0">Add Tahun Akademik</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -13,7 +13,7 @@
                 <div class="modal-body">
 					<form action="<?php echo site_url('admin/tahunajaran/simpan'); ?>" method="post">
 						<div class="form-group">
-							<label for="tahun">Sanah Dirasah</label>
+							<label for="tahun">Tahun Akademik</label>
 							<input type="text" class="form-control" id="tahun" name="nama_tahun">
 						</div>
 						<div class="form-group">
