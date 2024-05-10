@@ -63,9 +63,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="text-white-50">
-                        <h1 class="text-white font-weight-semibold mb-3 hero-title">E-Reward
+                        <h1 class="text-white font-weight-semibold mb-3 hero-title">E-MyClas
                             <?php echo $result->nama_lembaga; ?></h1>
-                        <p class="font-size-14">Aplikasi Reward Digital diharapkan dapat mendukung program Instansi, agar dapat memberikan layanan yang cepat, tepat dan akurat kepada seluruh
+                        <p class="font-size-14">Aplikasi MyClas Digital diharapkan dapat mendukung program Instansi, agar dapat memberikan layanan yang cepat, tepat dan akurat kepada seluruh
                             mahasiswa dan dosen.
                             Amin.....!!!</p>
 
@@ -188,8 +188,8 @@
                         <img src="<?php echo base_url('upload/logo/'.$result->logo); ?>" alt="" height="35">
                     </div>
 
-                    <p class="mb-2">2023 © E-Reward. Design & Develop by Aqid Fahri Hafin</p>
-                    <p>E-Reward Digital Pondok lembaga <?php echo $result->nama_lembaga; ?></p>
+                    <p class="mb-2">2023 © E-MyClas. Design & Develop by Aqid Fahri Hafin</p>
+                    <p>E-MyClas Digital Pondok lembaga <?php echo $result->nama_lembaga; ?></p>
                 </div>
 
             </div>
