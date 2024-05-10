@@ -65,9 +65,7 @@
                     <div class="text-white-50">
                         <h1 class="text-white font-weight-semibold mb-3 hero-title">E-MyClas
                             <?php echo $result->nama_lembaga; ?></h1>
-                        <p class="font-size-14">Aplikasi MyClas Digital diharapkan dapat mendukung program Instansi, agar dapat memberikan layanan yang cepat, tepat dan akurat kepada seluruh
-                            mahasiswa dan dosen.
-                            Amin.....!!!</p>
+                        <p class="font-size-14">Aplikasi MyClas  <?php echo $result->nama_lembaga; ?> ....!!!</p>
 
                         <div class="button-items mt-4">
                             <a href="<?php echo base_url('register');?>" class="btn btn-success">Register Now</a>
@@ -189,7 +187,7 @@
                     </div>
 
                     <p class="mb-2">2023 © E-MyClas. Design & Develop by Aqid Fahri Hafin</p>
-                    <p>E-MyClas Digital Pondok lembaga <?php echo $result->nama_lembaga; ?></p>
+                    <p>E-MyClas <?php echo $result->nama_lembaga; ?></p>
                 </div>
 
             </div>
