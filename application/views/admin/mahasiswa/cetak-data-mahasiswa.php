@@ -54,7 +54,7 @@
 				<tr>
 					<th >No</th>
 					<th>Nama</th>
-					<th>NIS</th>
+					<th>NIM</th>
 					<th>Jenis Kelamin</th>
 					<th>TTL</th>
 					<th>Prodi</th>

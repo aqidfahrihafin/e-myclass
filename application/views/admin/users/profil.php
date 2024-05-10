@@ -68,10 +68,6 @@
 									<td><?php echo $user_data->nama_dosen; ?></td>
 								</tr>
 								<tr>
-									<th scope="row">NIK</th>
-									<td><?php echo $user_data->nik; ?></td>
-								</tr>
-								<tr>
 									<th scope="row">NIDN</th>
 									<td><?php echo $user_data->nidn; ?></td>
 								</tr>							
@@ -119,10 +115,6 @@
 								<tr>
 									<th scope="row">NIM</th>
 									<td><?php echo $user_data->nim; ?></td>
-								</tr>
-								<tr>
-									<th scope="row">NIK</th>
-									<td><?php echo $user_data->nik; ?></td>
 								</tr>
 								<tr>
 									<th scope="row">TTL</th>

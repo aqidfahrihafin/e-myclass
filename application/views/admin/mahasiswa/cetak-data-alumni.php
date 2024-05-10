@@ -54,7 +54,7 @@
 				<tr>
 					<th width="10px">No</th>
 					<th>Nama</th>
-					<th>NIS</th>
+					<th>NIM</th>
 					<th>Jenis Kelamin</th>
 					<th>TTL</th>
 					<th>Tgl Keluar</th>
@@ -67,7 +67,7 @@
 						<tr>
 							<td><?php echo $no++; ?></td>
 							<td><?php echo $result->nama_mahasiswa; ?></td>
-							<td><?php echo $result->no_induk;?></td>
+							<td><?php echo $result->nim;?></td>
 							<td><?php echo $result->jenis_kelamin; ?></td>
 							<td><?php echo $result->tempat_lahir; ?>, <?php echo $result->tanggal_lahir; ?></td>
 							<td><?php echo $result->tanggal_keluar; ?></td>

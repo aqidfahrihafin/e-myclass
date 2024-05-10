@@ -107,7 +107,7 @@
                 <h2>Account Activation</h2>
             </div>
             <p align="justify">
-                Hi <b><?php echo $nama_dosen; ?></b>, one more step before you can use <b>E-Reward</b> LPPM Universitas Annuqayah account. <br>
+                Hi <b><?php echo $nama_dosen; ?></b>, one more step before you can use <b>E-MyClass</b> account. <br>
             </p>
             <!-- data dosen -->
 			<table>
@@ -149,7 +149,7 @@
             <br>
             <br>
             <small align="justify">The account activation button is valid only once.</small>
-            <p align="justify">Support by:  <strong>LPPM Universitas Annuqayah</strong>, Guluk-Guluk Sumenep Madura.
+            <p align="justify">Support by:  <strong>Apins Digital</strong>, Guluk-Guluk Sumenep Madura.
             </p>
 
         </div>

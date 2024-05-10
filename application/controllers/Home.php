@@ -135,7 +135,7 @@ private function sendActivationEmail($emailData) {
         'protocol' => 'smtp',
 		'smtp_host' => 'ssl://smtp.googlemail.com',
 		'smtp_port' => 587,
-        'smtp_user' => 'info@ua.sikma.yaswar.sch.id',
+        'smtp_user' => 'info@e-myclass.yaswar.sch.id',
         'smtp_pass' => 'Subhanallah123',
         'mailtype'  => 'html', 
         'charset'   => 'utf-8'
@@ -145,7 +145,7 @@ private function sendActivationEmail($emailData) {
     
     $this->email->set_mailtype("html");
     $this->email->set_newline("\r\n");
-    $this->email->from('info@ua.sikma.yaswar.sch.id', 'LPPM Universitas Annuqayah');
+    $this->email->from('info@e-myclass.yaswar.sch.id', 'E-MyClass Apins Digital');
     $this->email->to($email);
     $this->email->subject('Account Activation');
 
@@ -283,7 +283,7 @@ private function sendActivationEmailMahasiswa($EmailDataMahasiswa) {
         'protocol' => 'smtp',
 		'smtp_host' => 'ssl://smtp.googlemail.com',
 		'smtp_port' => 587,
-        'smtp_user' => 'info@ua.sikma.yaswar.sch.id',
+        'smtp_user' => 'info@e-myclass.yaswar.sch.id',
         'smtp_pass' => 'Subhanallah123',
         'mailtype'  => 'html', 
         'charset'   => 'utf-8'
@@ -293,7 +293,7 @@ private function sendActivationEmailMahasiswa($EmailDataMahasiswa) {
     
     $this->email->set_mailtype("html");
     $this->email->set_newline("\r\n");
-    $this->email->from('info@ua.sikma.yaswar.sch.id', 'LPPM Universitas Annuqayah');
+    $this->email->from('info@e-myclass.yaswar.sch.id', 'E-MyClass Apins Digital');
     $this->email->to($email);
     $this->email->subject('Account Activation');
 

@@ -4,12 +4,13 @@
 <head>
 
     <meta charset="utf-8">
-    <title><?php echo $title ?> | E-Reward</title>
+    <title><?php echo $title ?> | E-MyClass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Apins Digital Solusi Teknologi Tekini" name="description">
     <meta content="E-Raport" name="Aqid Fahri Hafin">
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?php echo base_url('upload/logo');?>/logo1.png">
+	<link href="<?php echo base_url('public/assets/');?>libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css">
   	<link href="<?php echo base_url('public/assets/');?>libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo base_url('public/assets/');?>libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo base_url('public/assets/');?>libs/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css">

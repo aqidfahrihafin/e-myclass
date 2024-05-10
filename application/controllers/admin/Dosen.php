@@ -35,7 +35,6 @@ class Dosen extends CI_Controller {
   public function simpan() {
 
 		$nidn = $this->input->post('nidn');
-		$nik = $this->input->post('nik');
 
 		$nidn_exists = $this->DosenModel->cek_nidn_exist($nidn);
 			if ($nidn_exists) {
@@ -45,19 +44,10 @@ class Dosen extends CI_Controller {
 				return; 
 			}
 
-		$nik_exists = $this->DosenModel->cek_nik_exist($nik);
-			if ($nik_exists) {
-				$this->session->set_flashdata('alert', '<div class="alert alert-danger">NIK sudah terdaftar dalam database!</div>');
-				$this->session->set_flashdata('alert_timeout', 4000);
-				redirect('dosen');
-				return; 
-			}
-
 		$data = array(
 			'dosen_id' => md5(date('YmdHis') . rand(1000, 9999)),
 			'no_card' => rand(1000, 9999),
 			'nidn' => $nidn,
-			'nik' => $nik,
 			'prodi_id' => $this->input->post('prodi_id'),
 			'nama_dosen' => $this->input->post('nama_dosen'),
 			'tempat_lahir' => $this->input->post('tempat_lahir'),
@@ -98,7 +88,6 @@ class Dosen extends CI_Controller {
 						}
 
 						$datadosen = array(
-							'nik'  => $row->getCellAtIndex(1)->getValue(),
 							'nidn'  => $row->getCellAtIndex(2)->getValue(),
 							'nama_dosen'  => $row->getCellAtIndex(3)->getValue(),
 							'jenis_kelamin'  => $row->getCellAtIndex(4)->getValue(),
@@ -135,8 +124,8 @@ class Dosen extends CI_Controller {
 	private function validasiAndFilterdosen($importdosen){
 		$filteredData = array();
 		foreach ($importdosen as $data) {
-			$nik = $data['nik'];
-			if (!$this->DosenModel->isNikExists($nik)) {
+			$nidn = $data['nidn'];
+			if (!$this->DosenModel->isNidnExists($nidn)) {
 				$filteredData[] = $data;
 			}
 		}
@@ -148,7 +137,6 @@ class Dosen extends CI_Controller {
         $dosen_id = $this->input->post('dosen_id');
         $data = array(
             'nidn' => $this->input->post('nidn'),
-            'nik' => $this->input->post('nik'),
             'prodi_id' => $this->input->post('prodi_id'),
             'nama_dosen' => $this->input->post('nama_dosen'),
             'tempat_lahir' => $this->input->post('tempat_lahir'),

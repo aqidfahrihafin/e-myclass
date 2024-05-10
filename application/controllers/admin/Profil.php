@@ -50,12 +50,12 @@ class Profil extends CI_Controller {
 			}
 
 			$this->form_validation->set_rules('nama_dosen');
-			$this->form_validation->set_rules('nik');
+			$this->form_validation->set_rules('nidn');
 		
 			$dosen_id = $dosen_id; 
 			$nama_dosen = $this->input->post('nama_dosen'); 
-			$nik = $this->input->post('nik'); 
-			$data = $nik;
+			$nidn = $this->input->post('nidn'); 
+			$data = $nidn;
 			// $data = 'E-Reward_' .$niy.'_'.$nama_dosen;
 			$filename = 'qrcode_dosen_' . $dosen_id;
 			$size = '250x250'; 
@@ -105,13 +105,13 @@ class Profil extends CI_Controller {
 			}
 
 			$this->form_validation->set_rules('nama_mahasiswa');
-			$this->form_validation->set_rules('nik');
+			$this->form_validation->set_rules('nim');
 		
 			$mahasiswa_id = $mahasiswa_id; 
 			$nama_mahasiswa = $this->input->post('nama_mahasiswa'); 
-			$nik = $this->input->post('nik'); 
-			// $data = $nik;
-			$data = 'E-Reward_' .$nik.'_'.$nama_mahasiswa;
+			$nim = $this->input->post('nim'); 
+			// $data = $nim;
+			$data = 'E-Reward_' .$nim.'_'.$nama_mahasiswa;
 			$filename = 'qrcode_mahasiswa_' . $mahasiswa_id;
 			$size = '250x250'; 
 			$logoPath = FCPATH . './upload/qrcode/logo.png'; 

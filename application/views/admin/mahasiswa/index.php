@@ -67,7 +67,7 @@
 											</td>
 											<td align="center">
 												<?php if ($result->status_mahasiswa == 'aktif'): ?>
-													<button type="button" class="btn btn-success btn-sm waves-effect waves-light" data-toggle="modal" data-target=".updatemahasiswa<?php echo $result->mahasiswa_id ?>">
+													<button type="button" class="btn btn-success btn-sm waves-effect waves-light" data-toggle="modal" data-target=".updateuser<?php echo $result->mahasiswa_id ?>">
 														<i class="mdi mdi-checkbox-marked-outline"></i>
 													</button>
 												<?php else: ?>
@@ -102,4 +102,5 @@
 	<?php $this->load->view('admin/mahasiswa/add');?>
 	<?php $this->load->view('admin/mahasiswa/adduser');?>
 	<?php $this->load->view('admin/mahasiswa/edit');?>
+	<?php $this->load->view('admin/mahasiswa/updateuser');?>
 	<?php $this->load->view('admin/mahasiswa/importmahasiswa');?>

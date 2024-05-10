@@ -124,8 +124,7 @@ CREATE TABLE users (
   password varchar(255) NOT NULL,
   create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	role ENUM('admin', 'bmsi','dosen','mahasiswa') DEFAULT 'mahasiswa',
-  PRIMARY KEY (user_id),
-	FOREIGN KEY (user_id) REFERENCES dosen (dosen_id) ON DELETE CASCADE
+  PRIMARY KEY (user_id)
 );
 
 -- tabel users profile
@@ -141,62 +140,8 @@ CREATE TABLE users_profile (
   FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa (mahasiswa_id) ON DELETE CASCADE
 );
 
--- tabel prestasi
-CREATE TABLE prestasi (
-    prestasi_id VARCHAR(36) NOT NULL,
-    mahasiswa_id VARCHAR(36) NOT NULL,
-    jenis_prestasi VARCHAR(20) NULL,
-    tingkat_prestasi VARCHAR(20) NULL,
-    nama_prestasi VARCHAR(100) NULL,
-    tahun_prestasi VARCHAR(10) NULL,
-    penyelenggara VARCHAR(100) NULL,
-    peringkat VARCHAR(100) NULL,
-    PRIMARY KEY (prestasi_id),
-		FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa (mahasiswa_id) ON DELETE CASCADE
-);
 
 
--- publikasi_peringkat
-CREATE TABLE peringkat_publikasi (
-    peringkat_publikasi_id VARCHAR(36) NOT NULL,
-    slug_url VARCHAR(255), 
-    nama_kategori VARCHAR(255),  
-    nama_peringkat VARCHAR(255), 
-		create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (peringkat_publikasi_id)
-);
-
--- kategori
-CREATE TABLE kategori (
-    kategori_id VARCHAR(36) NOT NULL,
-  	slug_url VARCHAR(255), 
-    nama_kategori VARCHAR(255), 
-    jenis_kategori_bpi VARCHAR(255), 
-		create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (kategori_id)
-);
-
--- tabel reward
-CREATE TABLE reward (
-    reward_id VARCHAR(36) NOT NULL,
-    dosen_id VARCHAR(36) NOT NULL,
-    peringkat_publikasi_id VARCHAR(36) NOT NULL,
-		create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (reward_id),
-		FOREIGN KEY (dosen_id) REFERENCES dosen (dosen_id) ON DELETE CASCADE,
-		FOREIGN KEY (peringkat_publikasi_id) REFERENCES peringkat_publikasi (peringkat_publikasi_id) ON DELETE CASCADE
-);
-
--- tabel anggota
-CREATE TABLE anggota (
-    anggota_id VARCHAR(36) NOT NULL,
-    dosen_id VARCHAR(36) NOT NULL,
-    reward_id VARCHAR(36) NOT NULL,
-		create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (anggota_id),
-		FOREIGN KEY (dosen_id) REFERENCES dosen (dosen_id) ON DELETE CASCADE,
-		FOREIGN KEY (reward_id) REFERENCES reward (reward_id) ON DELETE CASCADE
-);
 
 
 

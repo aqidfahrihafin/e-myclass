@@ -17,23 +17,17 @@ $route['lembaga'] = 'admin/lembaga/index';
 $route['tahunajaran'] = 'admin/tahunajaran/index';
 $route['fakultas'] = 'admin/fakultas/index';
 $route['prodi'] = 'admin/prodi/index';
-$route['perpub'] = 'admin/peringkatpublikasi/index';
-$route['kategori'] = 'admin/kategori/index';
-$route['prestasi'] = 'admin/prestasi/index';
-$route['beasiswa'] = 'admin/beasiswa/index';
-$route['absensi'] = 'admin/absensi/index';
-$route['catatanpembimbing'] = 'admin/catatanpembimbing/index';
+$route['kelas'] = 'admin/kelas/index';
+$route['makul'] = 'admin/makul/index';
+$route['detailmateri/(:any)'] = 'admin/materi/detailmateri/$1';
+$route['viewmateri/(:any)'] = 'admin/materi/viewmateri/$1';
+$route['listmateri/(:any)'] = 'admin/materi/listmateri/$1';
 
 //route dosen
 $route['dosen'] = 'admin/dosen/index';
-$route['pembimbing'] = 'admin/pembimbing/index';
-$route['datamengajar'] = 'admin/datamengajar/index';
-$route['dataajar'] = 'admin/datamengajar/index';
-$route['penilaian'] = 'admin/penilaian/index';
 
 //route mahasiswa
 $route['mahasiswa'] = 'admin/mahasiswa/index';
-$route['mahasiswakelas'] = 'admin/kelasmahasiswa/index';
 $route['detailkelas/(:any)'] = 'admin/kelasmahasiswa/detailkelas/$1';
 $route['alumni'] = 'admin/mahasiswa/alumni';
 
@@ -41,7 +35,6 @@ $route['alumni'] = 'admin/mahasiswa/alumni';
 $route['users'] = 'admin/users/index';
 $route['card'] = 'admin/users/card';
 $route['profil'] = 'admin/profil/index';
-$route['scan'] = 'ScanQRController';
 
 
 $route['404_override'] = '';

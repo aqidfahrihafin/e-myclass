@@ -13,16 +13,12 @@
                     <form class="custom-validation" action="<?php echo site_url('admin/dosen/update'); ?>" method="post">
                         <div class="alert alert-primary alert-dismissible fade show" role="alert" align="justify">
                             <i class="mdi mdi-bullseye-arrow"></i>
-                            <b>Perhatian !</b> pastikan anda memasukkan NIK/NIDN dengan benar.
-                        </div>
-                        <div class="form-group">
-                            <label for="nik">NIK</label>
-                            <input type="hidden" class="form-control" id="dosen_id" value="<?php echo $result['dosen_id']; ?>" name="dosen_id" required="">
-                            <input type="number" class="form-control" id="nik" value="<?php echo $result['nik']; ?>" name="nik" required="">
+                            <b>Perhatian !</b> pastikan anda memasukkan data dengan benar.
                         </div>
                         <div class="form-group">
                             <label for="nidn">NIDN</label>
                             <input type="text" class="form-control" id="nidn" value="<?php echo $result['nidn']; ?>" name="nidn" required="">
+                            <input type="hidden" class="form-control" id="dosen_id" value="<?php echo $result['dosen_id']; ?>" name="dosen_id" required="">
                         </div>
                         <div class="form-group">
                             <label for="nama">Nama</label>

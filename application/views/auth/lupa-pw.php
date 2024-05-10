@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <title><?php echo $title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="E-Reward LPPM Universitas Annuqayah by Aqid Fahri Hafin,S.Kom" name="description">
-    <meta content="E-Reward" name="Aqid Fahri Hafin">
+    <meta content="E-MyClass by Aqid Fahri Hafin,S.Kom" name="description">
+    <meta content="E-MyClass" name="Aqid Fahri Hafin">
     <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result->logo); ?>">
     <link href="<?php echo base_url('public/assets/');?>css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('public/assets/');?>css/icons.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
                                 <div class="col-7">
                                     <div class="text-primary p-4">
                                         <h5 class="text-primary"> Reset Password</h5>
-                                        <p>Re-Password with E-Reward <?php echo $result->nama_lembaga; ?>.</p>
+                                        <p>Re-Password with E-MyClass <?php echo $result->nama_lembaga; ?>.</p>
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">

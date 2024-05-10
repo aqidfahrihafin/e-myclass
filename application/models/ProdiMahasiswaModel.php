@@ -38,9 +38,7 @@ class KelasSantriModel extends CI_Model {
 		
 		return $query->result_array();
 	}
-	
-	
-	
+		
 
 	public function insert_kelas_santri($kelas_id, $santri_id) {
         $data = array(

@@ -22,7 +22,7 @@
 							<label class="control-label">Pilih Photo</label>
 							<input type="hidden" class="form-control" value="<?php echo $user_data->mahasiswa_id; ?>" name="mahasiswa_id" id="mahasiswa_id" >
 							<input type="hidden" class="form-control" value="<?php echo $user_data->nama_mahasiswa; ?>" name="nama_mahasiswa" id="nama_mahasiswa" >
-							<input type="hidden" class="form-control" value="<?php echo $user_data->nik; ?>" name="nik" id="nik" >
+							<input type="hidden" class="form-control" value="<?php echo $user_data->nim; ?>" name="nim" id="nim" >
                             <input type="file" class="form-control" name="photo" value="<?php echo $user_data->photo; ?>" id="photo" required>
 
 							<br>

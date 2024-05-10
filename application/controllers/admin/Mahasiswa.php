@@ -34,7 +34,7 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	public function formulir($mahasiswa_id) {
-		$data['title'] = 'Formulir mahasiswa';
+		$data['title'] = 'Formulir Mahasiswa';
 		$data['lembaga'] = $this->LembagaModel->get_lembaga();
         $data['mahasiswa'] = $this->MahasiswaModel->get_mahasiswa_by_id($mahasiswa_id);
 		$data['prestasi'] = $this->MahasiswaModel->get_prestasi_by_mahasiswa_id($mahasiswa_id);
@@ -42,7 +42,7 @@ class Mahasiswa extends CI_Controller {
     }
 
 	public function cetak() {
-		$this->data['title'] = 'Cetak Data mahasiswa';
+		$this->data['title'] = 'Cetak Data Mahasiswa';
 
 		$this->data['lembaga'] = $this->LembagaModel->get_lembaga();
 		$this->data['mahasiswa'] = $this->MahasiswaModel->get_all_data_mahasiswa();
@@ -69,7 +69,6 @@ class Mahasiswa extends CI_Controller {
 	 public function simpan() {
 
 		$nim = $this->input->post('nim');
-		$nik = $this->input->post('nik');
 		$nim_exists = $this->MahasiswaModel->cek_nim_exist($nim);
 			if ($nim_exists) {
 				$this->session->set_flashdata('alert', '<div class="alert alert-danger">no induk sudah terdaftar dalam database!</div>');
@@ -77,21 +76,12 @@ class Mahasiswa extends CI_Controller {
 				redirect('mahasiswa');
 				return; 
 		 }
-		$nik_exists = $this->MahasiswaModel->cek_nik_exist($nik);
-			if ($nik_exists) {
-				$this->session->set_flashdata('alert', '<div class="alert alert-danger">NIK sudah terdaftar dalam database!</div>');
-				$this->session->set_flashdata('alert_timeout', 4000);
-				redirect('mahasiswa');
-				return; 
-			}
 
 		$data = array(
 			'mahasiswa_id' => md5(date('YmdHis') . rand(1000, 9999)),
 			'no_card' => rand(1000, 9999),
 			'nim' => $nim,
-			'nik' => $nik,
 			'prodi_id' => $this->input->post('prodi_id'),
-			'no_kk' => $this->input->post('no_kk'),
 			'nama_mahasiswa' => $this->input->post('nama_mahasiswa'),
 			'tempat_lahir' => $this->input->post('tempat_lahir'),
 			'tanggal_lahir' => $this->input->post('tanggal_lahir'),
@@ -115,9 +105,7 @@ class Mahasiswa extends CI_Controller {
 		$mahasiswa_id = $this->input->post('mahasiswa_id');
 		$data = array(
 			'nim' => $this->input->post('nim'),
-			'nik' => $this->input->post('nik'),
 			'prodi_id' => $this->input->post('prodi_id'),
-			'no_kk' => $this->input->post('no_kk'),
 			'nama_mahasiswa' => $this->input->post('nama_mahasiswa'),
 			'tempat_lahir' => $this->input->post('tempat_lahir'),
 			'tanggal_lahir' => $this->input->post('tanggal_lahir'),
@@ -180,8 +168,27 @@ class Mahasiswa extends CI_Controller {
 
 	public function delete($mahasiswa_id) {		
 		$this->MahasiswaModel->delete_mahasiswa($mahasiswa_id);
+		$this->UsersModel->delete_users($mahasiswa_id);
 		$this->session->set_flashdata('alert', '<div class="alert  alert-info">Data berhasil dihapus!</div>');
 		$this->session->set_flashdata('alert_timeout', 4000);
 		redirect('mahasiswa');
+	}
+	
+	public function update_status() {
+		
+		$mahasiswa_id = $this->input->post('mahasiswa_id');
+		$data_mahasiswa = array(
+			'status' => 'non-aktif'
+		);
+		$this->MahasiswaModel->update_status($mahasiswa_id, $data_mahasiswa);
+		$user = $this->AuthModel->get_user_by_mahasiswa_id($mahasiswa_id);
+		if ($user) {
+			$this->AuthModel->delete_user($user->user_id);
+			$this->AuthModel->delete_user_profile($user->user_id);
+
+			$this->session->set_flashdata('alert', '<div class="alert  alert-info">Data users berhasil di non-aktifkan !</div>');
+            $this->session->set_flashdata('alert_timeout', 4000);
+			redirect('mahasiswa');
+		}
 	}
 }

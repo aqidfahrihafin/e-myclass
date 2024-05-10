@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title><?php echo $title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="E-Reward LPPM Universitas Annuqayah by Aqid Fahri Hafin,S.Kom" name="description">
+    <meta content="E-MyClass by Aqid Fahri Hafin,S.Kom" name="description">
     <meta content="Themesbrand" name="author">
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?php echo base_url('upload/logo/'.$result->logo); ?>">

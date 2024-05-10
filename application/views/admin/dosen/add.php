@@ -12,11 +12,7 @@
                     <form class="custom-validation" action="<?php echo site_url('admin/dosen/simpan'); ?>" method="post">
                         <div class="alert alert-primary alert-dismissible fade show" role="alert" align="justify">
                             <i class="mdi mdi-bullseye-arrow"></i>
-                            <b>Perhatian !</b> pastikan anda memasukkan NIK/NIDN dengan benar.
-                        </div>
-                        <div class="form-group">
-                            <label for="nik">NIK</label>
-                            <input type="number" class="form-control" id="nik" name="nik" required="">
+                            <b>Perhatian !</b> pastikan anda memasukkan NIDN dengan benar.
                         </div>
                         <div class="form-group">
                             <label for="nidn">NIDN</label>

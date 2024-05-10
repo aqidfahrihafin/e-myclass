@@ -23,7 +23,6 @@ class Lembaga extends CI_Controller {
 
 	public function index() {
 		$this->data['title'] = 'Lembaga';
-
 		$this->data['dosen'] = $this->DosenModel->get_all_dosen();
 		$this->data['lembaga'] = $this->LembagaModel->get_lembaga();
         $this->data['content_view'] = 'admin/profillembaga/index';

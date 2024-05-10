@@ -28,7 +28,6 @@ class FakultasModel extends CI_Model {
 		$this->db->where('fakultas_id', $fakultas_id);
 		$this->db->from('prodi');
 		$prodi_count = $this->db->count_all_results();
-	
 		// Jika terdapat prodi aktif, kembalikan true
 		return ($prodi_count > 0);
 	}

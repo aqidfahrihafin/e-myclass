@@ -22,7 +22,7 @@
 							<label class="control-label">Pilih photo</label>
 							<input type="hidden" class="form-control" value="<?php echo $user_data->dosen_id; ?>" name="dosen_id" id="dosen_id" >
 							<input type="hidden" class="form-control" value="<?php echo $user_data->nama_dosen; ?>" name="nama_dosen" id="nama_dosen" >
-							<input type="hidden" class="form-control" value="<?php echo $user_data->nik; ?>" name="nik" id="nik" >
+							<input type="hidden" class="form-control" value="<?php echo $user_data->nidn; ?>" name="nidn" id="nidn" >
                             <input type="file" class="form-control" name="photo" value="<?php echo $user_data->photo; ?>" id="photo">
 							<br>
 							<div class="card border border-danger">

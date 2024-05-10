@@ -78,14 +78,6 @@
 								</td>
 							</tr>
 							<tr>
-								<td width="25%">NIK</td> 
-								<td colspan="3">: <?php echo $mahasiswa->nik; ?></td> 
-							</tr>
-							<tr>
-								<td width="25%">No KK</td> 
-								<td colspan="3">: <?php echo $mahasiswa->no_kk; ?></td> 
-							</tr>
-							<tr>
 								<td width="25%">Nama Lengkap</td> 
 								<td colspan="3">: <?php echo $mahasiswa->nama_mahasiswa; ?></td> 
 							</tr>

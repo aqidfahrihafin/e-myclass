@@ -22,7 +22,7 @@
 							<tbody>
 								<tr>
 									<th style="width: 150px;">Username</th>
-									<td><?php echo $result['nik']; ?> </td>
+									<td><?php echo $result['nidn']; ?> </td>
 								</tr>
 								<tr>
 									<th style="width: 150px;">Password</th>

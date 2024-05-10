@@ -13,14 +13,6 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="nik">NIK</label>
-								<input type="number" class="form-control" id="nik" name="nik" required="">
-							</div>
-							<div class="form-group">
-								<label for="no_kk">Nomor KK</label>
-								<input type="number" class="form-control" id="no_kk" name="no_kk" required="">
-							</div>
-							<div class="form-group">
 								<label for="nim">NIM</label>
 								<input type="text" class="form-control" id="nim" name="nim" required="">
 							</div>
@@ -52,13 +44,14 @@
 									<option value="P">Perempuan</option>
 								</select>
 							</div>
-						</div>
-						<div class="col-md-6">
-							<!-- Kolom 2 -->
+							
 							<div class="form-group">
 								<label for="ttl">Tempat Lahir</label>
 								<input type="text" class="form-control" id="ttl" name="tempat_lahir"  required="">
 							</div>
+						</div>
+						<div class="col-md-6">
+							<!-- Kolom 2 -->
 							<div class="form-group">
 								<label for="tgl">Tanggal Lahir</label>
 								<input type="date" class="form-control" id="tgl" name="tanggal_lahir"  required="">

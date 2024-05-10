@@ -4,7 +4,6 @@
 <head>
     <title>Account Activation</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-
     <style>
     /* CSS styles go here */
     /* Example styles */
@@ -107,7 +106,7 @@
                 <h2>Account Activation</h2>
             </div>
             <p align="justify">
-                Hi <b><?php echo $nama_mahasiswa; ?></b>, one more step before you can use <b>E-Reward</b> LPPM Universitas Annuqayah account. <br>
+                Hi <b><?php echo $nama_mahasiswa; ?></b>, one more step before you can use <b>E-MyClass </b>account. <br>
             </p>
             <!-- data mahasiswa -->
 			<table>
@@ -149,7 +148,7 @@
             <br>
             <br>
             <small align="justify">The account activation button is valid only once.</small>
-            <p align="justify">Support by: <strong>LPPM Universitas Annuqayah</strong>, Guluk-Guluk Sumenep Madura.
+            <p align="justify">Support by: <strong>Aqid Fahri Hafin</strong>, Founder of Apins Digital.
             </p>
 
         </div>

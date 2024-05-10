@@ -56,9 +56,16 @@ class Prodi extends CI_Controller {
     }
 
 	public function delete($prodi_id){
-
-		 
+		$has_relations = $this->ProdiModel->check_active_relations($prodi_id);
 	
+		if ($has_relations) {
+			$this->session->set_flashdata('alert', '<div class="alert alert-danger">Tidak dapat menghapus <b>Prodi</b> karena ada relasi yang <b>Aktif</b>!</div>');
+			$this->session->set_flashdata('alert_timeout', 4000);
+		} else {
+			$this->ProdiModel->delete_prodi($prodi_id);
+			$this->session->set_flashdata('alert', '<div class="alert alert-info">Data prodi berhasil dihapus!</div>');
+			$this->session->set_flashdata('alert_timeout', 4000);
+		}
 		redirect('prodi');
 	}	
 

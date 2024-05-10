@@ -56,6 +56,10 @@
 <script src="<?php echo base_url('public/assets/');?>libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
 <script src="<?php echo base_url('public/assets/');?>libs/@chenfengyuan/datepicker/datepicker.min.js"></script>
 
+<script src="<?php echo base_url('public/assets/');?>libs/summernote/summernote-bs4.min.js"></script>
+<script src="<?php echo base_url('public/assets/');?>libs\jquery.repeater\jquery.repeater.min.js"></script>
+ <script src="<?php echo base_url('public/assets/');?>js\pages\task-create.init.js"></script>        
+
 <script src="<?php echo base_url('public/assets/');?>libs/dropzone/min/dropzone.min.js"></script>
 
 

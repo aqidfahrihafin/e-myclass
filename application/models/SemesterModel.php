@@ -20,8 +20,6 @@ class SemesterModel extends CI_Model {
 		return $this->db->get()->row(); // Mengembalikan satu baris hasil join
 	}
 
-
-
     public function update_semester($semester_id, $data) {
         $this->db->where('semester_id', $semester_id);
         $this->db->update('semester', $data);

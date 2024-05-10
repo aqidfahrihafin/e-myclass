@@ -79,4 +79,10 @@ class UsersModel extends CI_Model {
         return $query->row_array();
     }
 
+	public function delete_users($mahasiswa_id){
+        $this->db->where('user_id', $mahasiswa_id);
+        return $this->db->delete('users');
+    }
+
+
 }

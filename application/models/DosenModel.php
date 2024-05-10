@@ -103,8 +103,8 @@ class DosenModel extends CI_Model {
 		return $this->db->trans_status();
 	}
 
-	public function isNikExists($nik) {
-		$this->db->where('nik', $nik);
+	public function isNidnExists($nidn) {
+		$this->db->where('nidn', $nidn);
 		$query = $this->db->get('dosen');
 		return $query->num_rows() > 0;
 	}
